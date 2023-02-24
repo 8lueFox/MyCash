@@ -3,9 +3,38 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{7BE904A7-58D9-4921-B5DE-FC143C2B07EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wallets", "Wallets", "{169C53B2-9303-4125-ABD2-7E1236A1D8DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.Wallets.Core", "Services\Wallets\MyCash.Wallets.Core\MyCash.Wallets.Core.csproj", "{7C704B97-D2FC-487A-88BF-EE378B4ED12A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{EAB28E54-50DB-4C95-8462-F52970A075ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.Micro", "..\Framework\MyCash.Micro\MyCash.Micro.csproj", "{2EEFBC73-917B-4FD4-ADFD-A4EF9B0060B1}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C704B97-D2FC-487A-88BF-EE378B4ED12A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C704B97-D2FC-487A-88BF-EE378B4ED12A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C704B97-D2FC-487A-88BF-EE378B4ED12A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C704B97-D2FC-487A-88BF-EE378B4ED12A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EEFBC73-917B-4FD4-ADFD-A4EF9B0060B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EEFBC73-917B-4FD4-ADFD-A4EF9B0060B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EEFBC73-917B-4FD4-ADFD-A4EF9B0060B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EEFBC73-917B-4FD4-ADFD-A4EF9B0060B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{169C53B2-9303-4125-ABD2-7E1236A1D8DF} = {7BE904A7-58D9-4921-B5DE-FC143C2B07EB}
+		{7C704B97-D2FC-487A-88BF-EE378B4ED12A} = {169C53B2-9303-4125-ABD2-7E1236A1D8DF}
+		{2EEFBC73-917B-4FD4-ADFD-A4EF9B0060B1} = {EAB28E54-50DB-4C95-8462-F52970A075ED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6084E8DE-FCFB-4E8E-B2D6-A055ECB48969}
