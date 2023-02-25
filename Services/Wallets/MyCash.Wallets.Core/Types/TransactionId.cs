@@ -12,7 +12,7 @@ public record TransactionId
         Value = value;
     }
 
-    public static InvestmentObjectId Create() => new(Guid.NewGuid());
+    public static TransactionId Create() => new(Guid.NewGuid());
 
     public static implicit operator Guid(TransactionId obj)
         => obj.Value;

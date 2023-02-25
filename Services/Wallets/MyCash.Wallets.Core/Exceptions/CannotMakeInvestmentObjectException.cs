@@ -1,4 +1,4 @@
-﻿using MyCash.Micro;
+﻿using MyCash.Micro.Exceptions;
 using MyCash.Wallets.Core.ValueObjects;
 
 namespace MyCash.Wallets.Core.Exceptions;

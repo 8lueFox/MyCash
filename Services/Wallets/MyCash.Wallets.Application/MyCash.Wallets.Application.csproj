@@ -6,9 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Framework\MyCash.Micro\MyCash.Micro.csproj" />
-    <ProjectReference Include="..\..\..\MyCash.Framework\MyCash.Framework.csproj" />
-  </ItemGroup>
-
 </Project>
