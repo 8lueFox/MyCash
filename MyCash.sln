@@ -13,9 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.Micro", "..\Framework\MyCash.Micro\MyCash.Micro.csproj", "{2EEFBC73-917B-4FD4-ADFD-A4EF9B0060B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.Framework", "MyCash.Framework\MyCash.Framework.csproj", "{0C4A3BB3-2869-487B-BDE0-371C871F5A77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.Framework", "MyCash.Framework\MyCash.Framework.csproj", "{0C4A3BB3-2869-487B-BDE0-371C871F5A77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.Wallets.Application", "Services\Wallets\MyCash.Wallets.Application\MyCash.Wallets.Application.csproj", "{7BC771FA-4F93-4982-82C4-998D66B1161D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.Wallets.Application", "Services\Wallets\MyCash.Wallets.Application\MyCash.Wallets.Application.csproj", "{7BC771FA-4F93-4982-82C4-998D66B1161D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.Wallets.Infrastructure", "Services\Wallets\MyCash.Wallets.Infrastructure\MyCash.Wallets.Infrastructure.csproj", "{28AD2DE1-0B33-4D5D-ABF0-98CD92BF8CDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.Wallets.Api", "Services\Wallets\MyCash.Wallets.Api\MyCash.Wallets.Api.csproj", "{340D4A38-9374-4700-A0BC-F900C8427212}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.API", "MyCash.API\MyCash.API.csproj", "{6537C08E-4353-49D5-AC1D-52E4AA979D25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{7BC771FA-4F93-4982-82C4-998D66B1161D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BC771FA-4F93-4982-82C4-998D66B1161D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BC771FA-4F93-4982-82C4-998D66B1161D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28AD2DE1-0B33-4D5D-ABF0-98CD92BF8CDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28AD2DE1-0B33-4D5D-ABF0-98CD92BF8CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28AD2DE1-0B33-4D5D-ABF0-98CD92BF8CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28AD2DE1-0B33-4D5D-ABF0-98CD92BF8CDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{340D4A38-9374-4700-A0BC-F900C8427212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{340D4A38-9374-4700-A0BC-F900C8427212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{340D4A38-9374-4700-A0BC-F900C8427212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{340D4A38-9374-4700-A0BC-F900C8427212}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6537C08E-4353-49D5-AC1D-52E4AA979D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6537C08E-4353-49D5-AC1D-52E4AA979D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6537C08E-4353-49D5-AC1D-52E4AA979D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6537C08E-4353-49D5-AC1D-52E4AA979D25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +67,9 @@ Global
 		{2EEFBC73-917B-4FD4-ADFD-A4EF9B0060B1} = {EAB28E54-50DB-4C95-8462-F52970A075ED}
 		{0C4A3BB3-2869-487B-BDE0-371C871F5A77} = {EAB28E54-50DB-4C95-8462-F52970A075ED}
 		{7BC771FA-4F93-4982-82C4-998D66B1161D} = {169C53B2-9303-4125-ABD2-7E1236A1D8DF}
+		{28AD2DE1-0B33-4D5D-ABF0-98CD92BF8CDA} = {169C53B2-9303-4125-ABD2-7E1236A1D8DF}
+		{340D4A38-9374-4700-A0BC-F900C8427212} = {169C53B2-9303-4125-ABD2-7E1236A1D8DF}
+		{6537C08E-4353-49D5-AC1D-52E4AA979D25} = {EAB28E54-50DB-4C95-8462-F52970A075ED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6084E8DE-FCFB-4E8E-B2D6-A055ECB48969}

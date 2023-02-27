@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using MyCash.Wallets.Core.DomainServices;
 using MyCash.Wallets.Core.Policies;
+using System.Reflection;
 
 namespace MyCash.Wallets.Application;
 
@@ -15,6 +17,8 @@ public static class Extensions
             .AddClasses(c => c.AssignableTo(typeof(IInvestmentObjectPolicy)))
             .AsImplementedInterfaces()
             .WithSingletonLifetime());
+
+        services.AddMediatR(Assembly.GetExecutingAssembly());
 
         return services;
     }

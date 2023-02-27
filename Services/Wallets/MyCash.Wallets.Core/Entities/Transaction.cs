@@ -10,6 +10,9 @@ public class Transaction
 
     public Date Date { get; set; } = null!;
 
+    public InvestmentObjectId InvestmentObjectId { get; set; } = null!;
+    public virtual InvestmentObject InvestmentObject { get; set; } = null!;
+
     private Transaction()
     {
     }
