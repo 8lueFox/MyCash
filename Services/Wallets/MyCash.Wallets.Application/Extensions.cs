@@ -19,6 +19,7 @@ public static class Extensions
             .WithSingletonLifetime());
 
         services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         return services;
     }

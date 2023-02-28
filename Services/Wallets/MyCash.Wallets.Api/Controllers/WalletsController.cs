@@ -8,7 +8,7 @@ namespace MyCash.Wallets.Api.Controllers;
 public class WalletsController : BaseController
 {
     [HttpPost]
-    public async Task<ActionResult> CreateUserInvestmentObjects(CreateUserInvestmentObjectsRequest request)
+    public async Task<ActionResult<Guid>> CreateUserInvestmentObjects(CreateUserInvestmentObjectsRequest request)
     {
         var response = await Mediator.Send(request);
 
@@ -16,7 +16,15 @@ public class WalletsController : BaseController
     }
 
     [HttpPost]
-    public async Task<ActionResult> CreateUser(RegisterUserRequest request)
+    public async Task<ActionResult> AddTransactionToInvestmentObject(AddTransactionToInvestmentObjectRequest request)
+    {
+        var response = await Mediator.Send(request);
+
+        return Ok(response);
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<Guid>> AddInvestmentObject(AddInvestmentObjectRequest request)
     {
         var response = await Mediator.Send(request);
 

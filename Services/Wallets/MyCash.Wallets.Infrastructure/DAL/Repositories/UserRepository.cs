@@ -24,4 +24,5 @@ internal sealed class UserRepository : IUserRepository
 
     public Task<User?> GetAsync(UserId userId, CancellationToken cancellationToken = default)
         => _users.SingleOrDefaultAsync(x => x.Id == userId, cancellationToken);
+        
 }

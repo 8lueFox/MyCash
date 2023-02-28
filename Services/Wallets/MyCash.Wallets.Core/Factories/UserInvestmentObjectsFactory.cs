@@ -1,5 +1,6 @@
 ﻿using MyCash.Wallets.Core.Entities;
 using MyCash.Wallets.Core.Repositories;
+using MyCash.Wallets.Core.ValueObjects;
 
 namespace MyCash.Wallets.Core.Factories;
 
@@ -12,12 +13,12 @@ public class UserInvestmentObjectsFactory : IUserInvestmentObjectsFactory
         _userRepository = userRepository;
     }
 
-    public async Task<UserInvestmentObjects> CreateAsync(UserId userId, CancellationToken cancellationToken = default)
+    public async Task<UserInvestmentObjects> CreateAsync(UserId userId, UserInvestmentObjectName name, CancellationToken cancellationToken = default)
     {
         var user = await _userRepository.GetAsync(userId, cancellationToken);
         if (user is null)
             throw new UserNotFoundException(userId);
 
-        return new UserInvestmentObjects(AggregateId.Create(), user);
+        return new UserInvestmentObjects(AggregateId.Create(), user, name);
     }
 }

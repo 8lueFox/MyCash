@@ -9,17 +9,19 @@ public class UserInvestmentObjects : AggregateRoot
     private readonly HashSet<InvestmentObject> _investmentObjects = new();
 
     public UserId UserId { get; private set; } = null!;
+    public UserInvestmentObjectName UserInvestmentObjectName { get; private set; } = null!;
     public IEnumerable<InvestmentObject> InvestmentObjects => _investmentObjects;
 
     private UserInvestmentObjects()
     {
     }
 
-    public UserInvestmentObjects(AggregateId id, User user)
+    public UserInvestmentObjects(AggregateId id, User user, UserInvestmentObjectName userInvestmentObjectName)
     {
         Id = id;
         UserId = user.Id;
         _userPackage = user.UserPackage;
+        UserInvestmentObjectName = userInvestmentObjectName;
         IncrementVersion();
     }
 
@@ -39,6 +41,7 @@ public class UserInvestmentObjects : AggregateRoot
 
     internal void AddTransaction(InvestmentObjectId investmentObjectId, Transaction transaction)
     {
+        ///TODO: Check it out
         var io = _investmentObjects.SingleOrDefault(x => x.Id == investmentObjectId);
 
         if (io is null)

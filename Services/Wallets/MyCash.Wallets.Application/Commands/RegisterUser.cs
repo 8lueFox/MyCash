@@ -4,9 +4,9 @@ using MyCash.Wallets.Core.Repositories;
 
 namespace MyCash.Wallets.Application.Commands;
 
-public record RegisterUserRequest(string UserPackage) : IRequest;
+public record RegisterUserRequest(string UserPackage) : IRequest<Guid>;
 
-public class RegisterUserRequestHandler : IRequestHandler<RegisterUserRequest>
+public class RegisterUserRequestHandler : IRequestHandler<RegisterUserRequest, Guid>
 {
     private readonly IUserRepository _userRepository;
 
@@ -15,10 +15,10 @@ public class RegisterUserRequestHandler : IRequestHandler<RegisterUserRequest>
         _userRepository = userRepository;
     }
 
-    public async Task<Unit> Handle(RegisterUserRequest request, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(RegisterUserRequest request, CancellationToken cancellationToken)
     {
         var user = new User(Guid.NewGuid(), request.UserPackage);
         await _userRepository.AddAsync(user);
-        return Unit.Value;
+        return user.Id.Value;
     }
 }

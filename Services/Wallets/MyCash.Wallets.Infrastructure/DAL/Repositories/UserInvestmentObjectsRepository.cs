@@ -2,6 +2,7 @@
 using MyCash.Wallets.Core.Entities;
 using MyCash.Wallets.Core.Repositories;
 using MyCash.Wallets.Core.Types;
+using MyCash.Wallets.Core.ValueObjects;
 
 namespace MyCash.Wallets.Infrastructure.DAL.Repositories;
 
@@ -33,6 +34,14 @@ internal sealed class UserInvestmentObjectsRepository : IUserInvestmentObjectRep
             return new HashSet<Transaction>();
 
         return userInvestmentObjects.InvestmentObjects.SingleOrDefault(x => x.Id == investmentObjectsId).Transactions;
+    }
+
+    public async Task<UserInvestmentObjects?> GetUserInvestmentObjectAsync(UserId userId, UserInvestmentObjectName userInvestmentObjectName, CancellationToken cancellationToken)
+    {
+        if (userId is null || userInvestmentObjectName is null)
+            return null;
+
+        return await _userInvestmentObjects.Include(x => x.InvestmentObjects).SingleOrDefaultAsync(x => x.UserId == userId && x.UserInvestmentObjectName == userInvestmentObjectName);
     }
 
     public async Task<UserInvestmentObjects?> GetUserInvestmentObjectsAsync(UserId userId, CancellationToken cancellationToken)

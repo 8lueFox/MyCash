@@ -5,9 +5,9 @@ using MyCash.Wallets.Core.Types;
 
 namespace MyCash.Wallets.Application.Commands;
 
-public record CreateUserInvestmentObjectsRequest(Guid userId) : IRequest;
+public record CreateUserInvestmentObjectsRequest(Guid userId, string Name) : IRequest<Guid>;
 
-internal sealed class CreateUserInvestmentObjectsHandler : IRequestHandler<CreateUserInvestmentObjectsRequest>
+internal sealed class CreateUserInvestmentObjectsHandler : IRequestHandler<CreateUserInvestmentObjectsRequest, Guid>
 {
     private readonly IUserInvestmentObjectsFactory _userInvestmentObjectsFactory;
     private readonly IUserInvestmentObjectRepository _userInvestmentObjectsRepository;
@@ -18,18 +18,18 @@ internal sealed class CreateUserInvestmentObjectsHandler : IRequestHandler<Creat
         _userInvestmentObjectsRepository = userInvestmentObjectsRepository;
     }
 
-    public async Task<Unit> Handle(CreateUserInvestmentObjectsRequest request, CancellationToken cancellationToken)
+    public async Task<Guid> Handle(CreateUserInvestmentObjectsRequest request, CancellationToken cancellationToken)
     {
         var userId = new UserId(request.userId);
 
         var userInvestmentObjects = await _userInvestmentObjectsRepository.GetUserInvestmentObjectsAsync(userId, cancellationToken);
 
         if (userInvestmentObjects is not null)
-            return Unit.Value;
+            return userInvestmentObjects.Id;
 
-        userInvestmentObjects = await _userInvestmentObjectsFactory.CreateAsync(userId, cancellationToken);
+        userInvestmentObjects = await _userInvestmentObjectsFactory.CreateAsync(userId, request.Name, cancellationToken);
         await _userInvestmentObjectsRepository.AddAsync(userInvestmentObjects, cancellationToken);
 
-        return Unit.Value;
+        return userInvestmentObjects.Id;
     }
 }

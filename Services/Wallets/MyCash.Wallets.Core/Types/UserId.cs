@@ -6,8 +6,8 @@ public record UserId
 
     public UserId(Guid value)
     {
-        if (value == Guid.Empty)
-            throw new InvalidEntityIdException(value);
+        //if (value == Guid.Empty)
+       //     throw new InvalidEntityIdException(value);
 
         Value = value;
     }

@@ -21,6 +21,8 @@ internal sealed class UserInvestmentObjectsConfiguration : IEntityTypeConfigurat
             .HasConversion(x => x.Value, x => new AggregateId(x));
         builder.Property(x => x.UserId)
             .HasConversion(x => x.Value, x => new UserId(x));
+        builder.Property(x => x.UserInvestmentObjectName)
+            .HasConversion(x => x.Value, x => new UserInvestmentObjectName(x));
 
         builder.Property(typeof(UserPackage), "_userPackage")
             .HasConversion(userPackageConverter)
