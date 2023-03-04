@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyCash.API;
 using MyCash.Wallets.Application.Commands;
+using MyCash.Wallets.Application.DTO;
+using MyCash.Wallets.Application.Queries;
 
 namespace MyCash.Wallets.Api.Controllers;
 
@@ -25,6 +27,14 @@ public class WalletsController : BaseController
 
     [HttpPost]
     public async Task<ActionResult<Guid>> AddInvestmentObject(AddInvestmentObjectRequest request)
+    {
+        var response = await Mediator.Send(request);
+
+        return Ok(response);
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<UserInvestmentObjectsDto>>> GetUserInvestmentObjects([FromQuery]GetUserInvestmentObjectsRequest request)
     {
         var response = await Mediator.Send(request);
 

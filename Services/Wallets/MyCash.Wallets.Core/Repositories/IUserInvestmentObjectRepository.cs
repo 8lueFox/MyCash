@@ -6,8 +6,9 @@ namespace MyCash.Wallets.Core.Repositories;
 
 public interface IUserInvestmentObjectRepository
 {
-    Task<UserInvestmentObjects?> GetUserInvestmentObjectsAsync(UserId userId, CancellationToken cancellationToken);
-    Task<UserInvestmentObjects?> GetUserInvestmentObjectAsync(UserId userId, UserInvestmentObjectName userInvestmentObjectName, CancellationToken cancellationToken);
+    Task<IEnumerable<UserInvestmentObjects>> GetUserInvestmentObjectsAsync(Guid userId, CancellationToken cancellationToken);
+    Task<UserInvestmentObjects?> GetUserInvestmentObjectAsync(AggregateId id, CancellationToken cancellationToken);
+    Task<InvestmentObject?> GetInvestmentObject(Guid InvestmentObjectId, CancellationToken cancellationToken);
     Task<IEnumerable<Transaction>> GetTransactionsForInvestmentObject(UserId userId, InvestmentObjectId investmentObjectsId, CancellationToken cancellationToken);
     Task AddAsync(UserInvestmentObjects userInvestmentObjects, CancellationToken cancellationToken);
     Task UpdateAsync(UserInvestmentObjects userInvestmentObjects, CancellationToken cancellationToken);

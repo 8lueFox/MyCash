@@ -4,7 +4,7 @@ namespace MyCash.Wallets.Core.Entities;
 
 public class Transaction
 {
-    public TransactionId Id { get; private set; } = null!;
+    public TransactionId Id { get; internal set; } = null!;
 
     public Amount Amount { get; set; } = null!;
 

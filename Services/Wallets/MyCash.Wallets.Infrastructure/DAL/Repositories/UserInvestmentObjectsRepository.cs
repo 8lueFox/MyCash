@@ -23,6 +23,16 @@ internal sealed class UserInvestmentObjectsRepository : IUserInvestmentObjectRep
         await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
+    public async Task<InvestmentObject?> GetInvestmentObject(Guid InvestmentObjectId, CancellationToken cancellationToken)
+    {
+        var uio = await _userInvestmentObjects.SingleOrDefaultAsync(x => x.InvestmentObjects.Any(y => y.Id.Value == InvestmentObjectId), cancellationToken);
+
+        if (uio is null)
+            return null;
+
+        return uio.InvestmentObjects.SingleOrDefault(x => x.Id.Value == InvestmentObjectId);
+    }
+
     public async Task<IEnumerable<Transaction>> GetTransactionsForInvestmentObject(UserId userId, InvestmentObjectId investmentObjectsId, CancellationToken cancellationToken)
     {
         if(userId is null || investmentObjectsId is null)
@@ -36,17 +46,22 @@ internal sealed class UserInvestmentObjectsRepository : IUserInvestmentObjectRep
         return userInvestmentObjects.InvestmentObjects.SingleOrDefault(x => x.Id == investmentObjectsId).Transactions;
     }
 
-    public async Task<UserInvestmentObjects?> GetUserInvestmentObjectAsync(UserId userId, UserInvestmentObjectName userInvestmentObjectName, CancellationToken cancellationToken)
+    public async Task<UserInvestmentObjects?> GetUserInvestmentObjectAsync(AggregateId id, CancellationToken cancellationToken)
     {
-        if (userId is null || userInvestmentObjectName is null)
+        if (id is null)
             return null;
 
-        return await _userInvestmentObjects.Include(x => x.InvestmentObjects).SingleOrDefaultAsync(x => x.UserId == userId && x.UserInvestmentObjectName == userInvestmentObjectName);
+        return await _userInvestmentObjects.Include(x => x.InvestmentObjects).SingleOrDefaultAsync(x => x.Id == id);
     }
 
-    public async Task<UserInvestmentObjects?> GetUserInvestmentObjectsAsync(UserId userId, CancellationToken cancellationToken)
+    public async Task<IEnumerable<UserInvestmentObjects>> GetUserInvestmentObjectsAsync(Guid userId, CancellationToken cancellationToken)
+
     {
-        var userInvestmentObjects = await _userInvestmentObjects.Where(x => x.UserId == userId).SingleOrDefaultAsync();
+        var userInvestmentObjects = await _userInvestmentObjects
+            .Include(x => x.InvestmentObjects)
+            .ThenInclude(x => x.Transactions)
+            .Where(x => x.UserId == userId)
+            .ToListAsync();
         return userInvestmentObjects;
     }
 

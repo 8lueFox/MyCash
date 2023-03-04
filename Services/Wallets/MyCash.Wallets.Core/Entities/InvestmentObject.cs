@@ -10,7 +10,7 @@ public class InvestmentObject
 
     public InvestmentObjectType Type { get; private set; } = null!;
 
-    public HashSet<Transaction> Transactions { get; private set; } = null!;
+    public HashSet<Transaction> Transactions { get; private set; } = new();
 
     private InvestmentObject()
     {
@@ -31,5 +31,8 @@ public class InvestmentObject
         => Type = type;
 
     internal void AddTransaction(Transaction transaction)
-        => Transactions.Add(transaction);
+    {
+        transaction.InvestmentObjectId = Id;
+        Transactions.Add(transaction);
+    }
 }

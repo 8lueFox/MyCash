@@ -4,7 +4,7 @@ using MyCash.Wallets.Core.Repositories;
 
 namespace MyCash.Wallets.Application.Commands;
 
-public record AddInvestmentObjectRequest(Guid UserId, string UserInvestmentObjectName, string Name, string Type) : IRequest<Guid>;
+public record AddInvestmentObjectRequest(Guid UserInvestmentObjectsId, string Name, string Type) : IRequest<Guid>;
 
 public class AddInvestmentObjectRequestHandler : IRequestHandler<AddInvestmentObjectRequest, Guid>
 {
@@ -19,7 +19,7 @@ public class AddInvestmentObjectRequestHandler : IRequestHandler<AddInvestmentOb
 
     public async Task<Guid> Handle(AddInvestmentObjectRequest request, CancellationToken cancellationToken)
     {
-        var userInvestmentObject = await _userInvestmentObjectsRepository.GetUserInvestmentObjectAsync(request.UserId, request.UserInvestmentObjectName, cancellationToken);
+        var userInvestmentObject = await _userInvestmentObjectsRepository.GetUserInvestmentObjectAsync(request.UserInvestmentObjectsId, cancellationToken);
 
         if(userInvestmentObject is null)
             return Guid.Empty;

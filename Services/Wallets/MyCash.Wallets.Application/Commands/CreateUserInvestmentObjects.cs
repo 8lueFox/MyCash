@@ -5,7 +5,7 @@ using MyCash.Wallets.Core.Types;
 
 namespace MyCash.Wallets.Application.Commands;
 
-public record CreateUserInvestmentObjectsRequest(Guid userId, string Name) : IRequest<Guid>;
+public record CreateUserInvestmentObjectsRequest(Guid UserId, string Name) : IRequest<Guid>;
 
 internal sealed class CreateUserInvestmentObjectsHandler : IRequestHandler<CreateUserInvestmentObjectsRequest, Guid>
 {
@@ -20,14 +20,9 @@ internal sealed class CreateUserInvestmentObjectsHandler : IRequestHandler<Creat
 
     public async Task<Guid> Handle(CreateUserInvestmentObjectsRequest request, CancellationToken cancellationToken)
     {
-        var userId = new UserId(request.userId);
+        var userId = new UserId(request.UserId);
 
-        var userInvestmentObjects = await _userInvestmentObjectsRepository.GetUserInvestmentObjectsAsync(userId, cancellationToken);
-
-        if (userInvestmentObjects is not null)
-            return userInvestmentObjects.Id;
-
-        userInvestmentObjects = await _userInvestmentObjectsFactory.CreateAsync(userId, request.Name, cancellationToken);
+        var userInvestmentObjects = await _userInvestmentObjectsFactory.CreateAsync(userId, request.Name, cancellationToken);
         await _userInvestmentObjectsRepository.AddAsync(userInvestmentObjects, cancellationToken);
 
         return userInvestmentObjects.Id;
