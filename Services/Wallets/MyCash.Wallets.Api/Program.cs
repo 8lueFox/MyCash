@@ -2,6 +2,7 @@ using MyCash.Framework;
 using MyCash.Wallets.Application;
 using MyCash.Wallets.Core;
 using MyCash.Wallets.Infrastructure;
+using Extensions = MyCash.Wallets.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,5 +31,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+Extensions.InitDb(builder.Services.BuildServiceProvider(), new CancellationToken());
 
 app.Run();

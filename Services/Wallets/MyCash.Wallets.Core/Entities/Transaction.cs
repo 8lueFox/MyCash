@@ -17,7 +17,7 @@ public class Transaction
     {
     }
 
-    internal Transaction(TransactionId id, Amount amount, Date date)
+    public Transaction(TransactionId id, Amount amount, Date date)
     {
         Id = id;
         Amount = amount;

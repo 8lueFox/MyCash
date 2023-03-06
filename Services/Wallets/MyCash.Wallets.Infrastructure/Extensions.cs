@@ -12,7 +12,14 @@ public static class Extensions
         => services
             .AddDbContext<WalletDbContext>(opt =>
                 opt.UseInMemoryDatabase("WalletsDB"))
+            .AddScoped<WalletDataInitializator>()
             .AddScoped<IUserRepository, UserRepository>()
             .AddScoped<IUserInvestmentObjectRepository, UserInvestmentObjectsRepository>();
 
+    public async static void InitDb(IServiceProvider serviceProvider, CancellationToken cancellationToken)
+    {
+        var initiazlier = serviceProvider.GetRequiredService<WalletDataInitializator>();
+
+        await initiazlier.InitAsync(cancellationToken);
+    }
 }

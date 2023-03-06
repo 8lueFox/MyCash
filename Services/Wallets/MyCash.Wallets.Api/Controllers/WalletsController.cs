@@ -40,4 +40,12 @@ public class WalletsController : BaseController
 
         return Ok(response);
     }
+
+    [HttpGet]
+    public async Task<ActionResult<InvestmentObjectDto>> GetInvestmentObject([FromQuery]GetInvestmentObjectRequest request)
+    {
+        var response = await Mediator.Send(request);
+
+        return Ok(response);
+    }
 }

@@ -19,9 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.Wallets.Application"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.Wallets.Infrastructure", "Services\Wallets\MyCash.Wallets.Infrastructure\MyCash.Wallets.Infrastructure.csproj", "{28AD2DE1-0B33-4D5D-ABF0-98CD92BF8CDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.Wallets.Api", "Services\Wallets\MyCash.Wallets.Api\MyCash.Wallets.Api.csproj", "{340D4A38-9374-4700-A0BC-F900C8427212}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.Wallets.Api", "Services\Wallets\MyCash.Wallets.Api\MyCash.Wallets.Api.csproj", "{340D4A38-9374-4700-A0BC-F900C8427212}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.API", "MyCash.API\MyCash.API.csproj", "{6537C08E-4353-49D5-AC1D-52E4AA979D25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.API", "MyCash.API\MyCash.API.csproj", "{6537C08E-4353-49D5-AC1D-52E4AA979D25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{1D4D03EE-15B0-4193-ADCC-BF964CE3BF0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.Users.Core", "Services\Users\MyCash.Users.Core\MyCash.Users.Core.csproj", "{98C88D31-4AB5-4BEE-AF47-DB10EF3477C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,10 @@ Global
 		{6537C08E-4353-49D5-AC1D-52E4AA979D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6537C08E-4353-49D5-AC1D-52E4AA979D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6537C08E-4353-49D5-AC1D-52E4AA979D25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98C88D31-4AB5-4BEE-AF47-DB10EF3477C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98C88D31-4AB5-4BEE-AF47-DB10EF3477C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98C88D31-4AB5-4BEE-AF47-DB10EF3477C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98C88D31-4AB5-4BEE-AF47-DB10EF3477C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +78,8 @@ Global
 		{28AD2DE1-0B33-4D5D-ABF0-98CD92BF8CDA} = {169C53B2-9303-4125-ABD2-7E1236A1D8DF}
 		{340D4A38-9374-4700-A0BC-F900C8427212} = {169C53B2-9303-4125-ABD2-7E1236A1D8DF}
 		{6537C08E-4353-49D5-AC1D-52E4AA979D25} = {EAB28E54-50DB-4C95-8462-F52970A075ED}
+		{1D4D03EE-15B0-4193-ADCC-BF964CE3BF0A} = {7BE904A7-58D9-4921-B5DE-FC143C2B07EB}
+		{98C88D31-4AB5-4BEE-AF47-DB10EF3477C5} = {1D4D03EE-15B0-4193-ADCC-BF964CE3BF0A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6084E8DE-FCFB-4E8E-B2D6-A055ECB48969}

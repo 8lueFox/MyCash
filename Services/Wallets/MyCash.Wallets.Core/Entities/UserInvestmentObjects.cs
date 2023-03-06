@@ -25,7 +25,7 @@ public class UserInvestmentObjects : AggregateRoot
         IncrementVersion();
     }
 
-    internal void AddInvestmentObject(InvestmentObject io, IEnumerable<IInvestmentObjectPolicy> policies)
+    public void AddInvestmentObject(InvestmentObject io, IEnumerable<IInvestmentObjectPolicy> policies)
     {
         var policy = policies.SingleOrDefault(p => p.CanBeApplied(_userPackage));
 
@@ -39,9 +39,8 @@ public class UserInvestmentObjects : AggregateRoot
         IncrementVersion();
     }
 
-    internal void AddTransaction(InvestmentObjectId investmentObjectId, Transaction transaction)
+    public void AddTransaction(InvestmentObjectId investmentObjectId, Transaction transaction)
     {
-        ///TODO: Check it out
         var io = _investmentObjects.SingleOrDefault(x => x.Id == investmentObjectId);
 
         if (io is null)

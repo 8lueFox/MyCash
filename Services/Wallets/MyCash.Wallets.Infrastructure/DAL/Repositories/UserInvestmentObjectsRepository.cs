@@ -25,7 +25,8 @@ internal sealed class UserInvestmentObjectsRepository : IUserInvestmentObjectRep
 
     public async Task<InvestmentObject?> GetInvestmentObject(Guid InvestmentObjectId, CancellationToken cancellationToken)
     {
-        var uio = await _userInvestmentObjects.SingleOrDefaultAsync(x => x.InvestmentObjects.Any(y => y.Id.Value == InvestmentObjectId), cancellationToken);
+        ///TODO: Repair that
+        var uio = await _userInvestmentObjects.Include(x => x.InvestmentObjects).SingleOrDefaultAsync(x => x.InvestmentObjects.Any(y => y.Id.Value == InvestmentObjectId), cancellationToken);
 
         if (uio is null)
             return null;

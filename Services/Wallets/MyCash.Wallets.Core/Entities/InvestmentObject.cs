@@ -16,7 +16,7 @@ public class InvestmentObject
     {
     }
 
-    internal InvestmentObject(InvestmentObjectId id, InvestmentObjectName name, InvestmentObjectType type)
+    public InvestmentObject(InvestmentObjectId id, InvestmentObjectName name, InvestmentObjectType type)
     {
         Id = id;
         Name = name;
