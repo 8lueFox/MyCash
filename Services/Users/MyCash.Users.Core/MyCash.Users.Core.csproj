@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Framework\MyCash.Micro\MyCash.Micro.csproj" />
     <ProjectReference Include="..\..\..\MyCash.API\MyCash.API.csproj" />
+    <ProjectReference Include="..\..\..\MyCash.Auth\MyCash.Auth.csproj" />
     <ProjectReference Include="..\..\..\MyCash.Framework\MyCash.Framework.csproj" />
   </ItemGroup>
 

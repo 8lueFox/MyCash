@@ -2,7 +2,7 @@
 
 namespace MyCash.Users.Core.Repositories;
 
-internal interface IRoleRepository
+public interface IRoleRepository
 {
     Task<Role?> GetAsync(string name);
     Task<IReadOnlyList<Role>> GetAllAsync();
