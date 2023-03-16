@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using MyCash.Auth;
 using MyCash.Micro;
 
 namespace MyCash.Framework;
