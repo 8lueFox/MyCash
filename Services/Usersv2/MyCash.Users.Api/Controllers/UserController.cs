@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Micro.Auth.JWT;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -16,10 +17,12 @@ namespace MyCash.Users.Api.Controllers;
 public class UserController : ControllerBase
 {
     private readonly IConfiguration _config;
+    private readonly IJsonWebTokenManager _jsonWebTokenManager;
 
-    public UserController(IConfiguration config)
+    public UserController(IConfiguration config, IJsonWebTokenManager jsonWebTokenManager)
     {
         _config = config;
+        _jsonWebTokenManager = jsonWebTokenManager;
     }
 
     [AllowAnonymous]
@@ -30,7 +33,8 @@ public class UserController : ControllerBase
 
         if(user != null)
         {
-            var token = Generate(user);
+            //var token = Generate(user);
+            var token = _jsonWebTokenManager.CreateToken(user.Id.ToString(), user.Email, user.Role);
             return Ok(token);
         }
 

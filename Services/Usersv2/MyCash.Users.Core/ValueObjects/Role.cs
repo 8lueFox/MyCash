@@ -12,4 +12,7 @@ public class Role
 
     public const string User = "user";
     public const string Admin = "admin";
+
+    public static implicit operator string(Role type)
+       => type.Name;
 }

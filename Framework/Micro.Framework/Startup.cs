@@ -9,8 +9,7 @@ public static class Startup
 {
     public static IServiceCollection AddMicroFramework(this IServiceCollection services, IConfiguration config)
     {
-        var appInfo = new AppInfo("", "");
-        config.GetSection("app").Bind(appInfo);
+        var appInfo = config.GetSection("app").Get<AppInfo>();
         services.AddSingleton(appInfo);
 
         services.AddAuth(config);
