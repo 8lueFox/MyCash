@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Micro.DAL;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +24,8 @@ public static class Startup
             .AddSingleton<IPasswordHasher<User>, PasswordHasher<User>>()
             .AddDbContext<UserDbContext>(opt =>
                 opt.UseInMemoryDatabase("MyCashDb"))
-            .AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            .AddSingleton<IHttpContextAccessor, HttpContextAccessor>()
+            .AddInitalizer<UserDbInitalizer>()
+            .AddDAL();
     }
 }

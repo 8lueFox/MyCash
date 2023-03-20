@@ -21,7 +21,11 @@ internal class GetUserRequestHandler : IRequestHandler<GetUserRequest, UserDto>
 
     public async Task<UserDto> Handle(GetUserRequest request, CancellationToken cancellationToken)
     {
-        var user = await _userDbContext.Users.SingleOrDefaultAsync(x => x.Id == request.UserId, cancellationToken);
+        var user = await _userDbContext
+            .Users
+            .AsNoTracking()
+            .Include(x => x.Role)
+            .SingleOrDefaultAsync(x => x.Id == request.UserId, cancellationToken);
 
         return new UserDto
         {
