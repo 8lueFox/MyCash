@@ -37,11 +37,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Usersv2", "Usersv2", "{26A0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Framework", "Framework\Micro.Framework\Micro.Framework.csproj", "{F0C11A14-6F9A-4B3B-BCDE-1A368122BA50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.Users.Api", "Services\Usersv2\MyCash.Users.Api\MyCash.Users.Api.csproj", "{F3D53D2A-7D4F-4496-ACE5-0EE698DCD839}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.Users.Api", "Services\Usersv2\MyCash.Users.Api\MyCash.Users.Api.csproj", "{F3D53D2A-7D4F-4496-ACE5-0EE698DCD839}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Auth", "Framework\Micro.Auth\Micro.Auth.csproj", "{311CF0B5-7C71-4F73-A950-5D6C91799A5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Auth", "Framework\Micro.Auth\Micro.Auth.csproj", "{311CF0B5-7C71-4F73-A950-5D6C91799A5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.Users.Core", "Services\Usersv2\MyCash.Users.Core\MyCash.Users.Core.csproj", "{DF17E089-C10D-481A-9697-CE630E276083}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.Users.Core", "Services\Usersv2\MyCash.Users.Core\MyCash.Users.Core.csproj", "{DF17E089-C10D-481A-9697-CE630E276083}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Security", "Framework\Micro.Security\Micro.Security.csproj", "{82038E99-EC3E-4230-B283-A37DED1AFA6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,6 +107,10 @@ Global
 		{DF17E089-C10D-481A-9697-CE630E276083}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF17E089-C10D-481A-9697-CE630E276083}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF17E089-C10D-481A-9697-CE630E276083}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82038E99-EC3E-4230-B283-A37DED1AFA6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82038E99-EC3E-4230-B283-A37DED1AFA6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82038E99-EC3E-4230-B283-A37DED1AFA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82038E99-EC3E-4230-B283-A37DED1AFA6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -127,6 +133,7 @@ Global
 		{F3D53D2A-7D4F-4496-ACE5-0EE698DCD839} = {26A02E0F-FCEB-4EAE-947B-7B1B2410EDD2}
 		{311CF0B5-7C71-4F73-A950-5D6C91799A5D} = {00FB371E-3FF9-47BD-BB6F-6C4524D0E61D}
 		{DF17E089-C10D-481A-9697-CE630E276083} = {26A02E0F-FCEB-4EAE-947B-7B1B2410EDD2}
+		{82038E99-EC3E-4230-B283-A37DED1AFA6C} = {00FB371E-3FF9-47BD-BB6F-6C4524D0E61D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6084E8DE-FCFB-4E8E-B2D6-A055ECB48969}

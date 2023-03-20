@@ -1,6 +1,7 @@
-﻿using MyCash.Users.Core.ValueObjects;
+﻿using MyCash.Users.Core.Entities;
+using MyCash.Users.Core.ValueObjects;
 
-namespace MyCash.Users.Core.Entites;
+namespace MyCash.Users.Core.Entities;
 
 public class User
 {

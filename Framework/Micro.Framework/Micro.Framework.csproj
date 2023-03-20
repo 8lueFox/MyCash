@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Micro.Auth\Micro.Auth.csproj" />
+    <ProjectReference Include="..\Micro.Security\Micro.Security.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using MyCash.Users.Core.Entites;
+﻿using MyCash.Users.Core.Entities;
 
 namespace MyCash.Users.Core.Repositories;
 

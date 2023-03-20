@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Framework\Micro.Framework\Micro.Framework.csproj" />
+    <ProjectReference Include="..\..\..\MyCash.API\MyCash.API.csproj" />
     <ProjectReference Include="..\MyCash.Users.Core\MyCash.Users.Core.csproj" />
   </ItemGroup>
 

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using MyCash.Users.Core.Dto;
-using MyCash.Users.Core.Entites;
+using MyCash.Users.Core.Entities;
 using MyCash.Users.Core.ValueObjects;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -34,7 +34,7 @@ public class UserController : ControllerBase
         if(user != null)
         {
             //var token = Generate(user);
-            var token = _jsonWebTokenManager.CreateToken(user.Id.ToString(), user.Email, user.Role);
+            var token = _jsonWebTokenManager.CreateToken(user.Id.ToString(), user.Email, user.Role.Name);
             return Ok(token);
         }
 
@@ -77,7 +77,7 @@ public class UserController : ControllerBase
         return currentUser;
     }
 
-    private User GetCurrentUser()
+    private User? GetCurrentUser()
     {
         var identity = HttpContext.User.Identity as ClaimsIdentity;
 

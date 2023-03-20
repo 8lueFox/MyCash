@@ -29,6 +29,7 @@ internal sealed class JsonWebTokenManager : IJsonWebTokenManager
 
     public JsonWebToken CreateToken(string userId, string? email = null, string? role = null, IDictionary<string, IEnumerable<string>>? claims = null)
     {
+        ///TODO: Change getting current date from the service IClock
         var now = DateTime.Now;
 
         var jwtClaims = new List<Claim>
