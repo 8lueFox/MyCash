@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Framework\MyCash.Micro\MyCash.Micro.csproj" />
-    <ProjectReference Include="..\..\..\MyCash.Framework\MyCash.Framework.csproj" />
+    <ProjectReference Include="..\..\..\Framework\Micro.Framework\Micro.Framework.csproj" />
   </ItemGroup>
 
 </Project>

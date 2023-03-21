@@ -1,4 +1,4 @@
-﻿using MyCash.Micro.Time;
+﻿using Micro.Time;
 using MyCash.Wallets.Core.Entities;
 using MyCash.Wallets.Core.Policies;
 using MyCash.Wallets.Core.ValueObjects;

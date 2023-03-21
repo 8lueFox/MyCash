@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Framework\MyCash.Micro\MyCash.Micro.csproj" />
-    <ProjectReference Include="..\MyCash.Auth\MyCash.Auth.csproj" />
+    <PackageReference Include="MediatR" Version="12.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
   </ItemGroup>
 
 </Project>

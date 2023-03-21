@@ -1,4 +1,4 @@
-using MyCash.Framework;
+using Micro.Framework;
 using MyCash.Wallets.Application;
 using MyCash.Wallets.Core;
 using MyCash.Wallets.Infrastructure;
@@ -7,7 +7,7 @@ using Extensions = MyCash.Wallets.Infrastructure.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
-    .AddMicroFramework()
+    .AddMicroFramework(builder.Configuration)
     .AddCore()
     .AddApplication()
     .AddInfrastructure();
@@ -28,6 +28,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

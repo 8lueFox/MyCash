@@ -18,7 +18,7 @@ public static class Extensions
             .AsImplementedInterfaces()
             .WithSingletonLifetime());
 
-        services.AddMediatR(Assembly.GetExecutingAssembly());
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Extensions).Assembly));
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         return services;

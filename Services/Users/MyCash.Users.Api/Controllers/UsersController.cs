@@ -1,8 +1,7 @@
-﻿using MediatR;
+﻿using Micro.WebAPI;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MyCash.API;
 using MyCash.Users.Core.Commands;
 using MyCash.Users.Core.Queries;
 using MyCash.Users.Core.Services;

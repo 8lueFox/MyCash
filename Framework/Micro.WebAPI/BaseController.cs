@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MyCash.API;
+namespace Micro.WebAPI;
 
 [Route("api/[controller]")]
 [ApiController]

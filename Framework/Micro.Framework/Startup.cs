@@ -16,6 +16,7 @@ public static class Startup
 
         services.AddSingleton(appInfo);
 
+        services.AddMicro();
         services.AddAuth(config);
         services.AddSecurity();
 

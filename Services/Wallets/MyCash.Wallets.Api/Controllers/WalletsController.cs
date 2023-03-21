@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MyCash.API;
+﻿using Micro.WebAPI;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyCash.Wallets.Application.Commands;
 using MyCash.Wallets.Application.DTO;
 using MyCash.Wallets.Application.Queries;
@@ -9,10 +10,18 @@ namespace MyCash.Wallets.Api.Controllers;
 [Route("api/[controller]/[action]")]
 public class WalletsController : BaseController
 {
-    [HttpPost]
-    public async Task<ActionResult<Guid>> CreateUserInvestmentObjects(CreateUserInvestmentObjectsRequest request)
+    private readonly IHttpContextAccessor _context;
+
+    public WalletsController(IHttpContextAccessor context)
     {
-        var response = await Mediator.Send(request);
+        _context = context;
+    }
+
+    [HttpPost]
+    [Authorize]
+    public async Task<ActionResult<Guid>> CreateUserInvestmentObjects(string Name)
+    {
+        var response = await Mediator.Send(new CreateUserInvestmentObjectsRequest(UserId(_context.HttpContext), Name));
 
         return Ok(response);
     }
@@ -20,9 +29,9 @@ public class WalletsController : BaseController
     [HttpPost]
     public async Task<ActionResult> AddTransactionToInvestmentObject(AddTransactionToInvestmentObjectRequest request)
     {
-        var response = await Mediator.Send(request);
+        await Mediator.Send(request);
 
-        return Ok(response);
+        return Ok();
     }
 
     [HttpPost]
@@ -34,7 +43,7 @@ public class WalletsController : BaseController
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<UserInvestmentObjectsDto>>> GetUserInvestmentObjects([FromQuery]GetUserInvestmentObjectsRequest request)
+    public async Task<ActionResult<IEnumerable<UserInvestmentObjectsDto>>> GetUserInvestmentObjects([FromQuery] GetUserInvestmentObjectsRequest request)
     {
         var response = await Mediator.Send(request);
 
@@ -42,10 +51,13 @@ public class WalletsController : BaseController
     }
 
     [HttpGet]
-    public async Task<ActionResult<InvestmentObjectDto>> GetInvestmentObject([FromQuery]GetInvestmentObjectRequest request)
+    public async Task<ActionResult<InvestmentObjectDto>> GetInvestmentObject([FromQuery] GetInvestmentObjectRequest request)
     {
         var response = await Mediator.Send(request);
 
         return Ok(response);
     }
+
+    static Guid UserId(HttpContext? context)
+        => context is null ? Guid.Empty : string.IsNullOrWhiteSpace(context.User.Identity?.Name) ? Guid.Empty : Guid.Parse(context.User.Identity.Name);
 }

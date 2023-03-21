@@ -23,12 +23,12 @@ internal class AddTransactionToInvestmentObjectHandler : IRequestHandler<AddTran
         _userInvestmentObjectsService = userInvestmentObjectsService;
     }
 
-    public async Task<Unit> Handle(AddTransactionToInvestmentObjectRequest request, CancellationToken cancellationToken)
+    public async Task Handle(AddTransactionToInvestmentObjectRequest request, CancellationToken cancellationToken)
     {
         var userInvestmentObjects = await _userInvestmentObjectsRepository.GetUserInvestmentObjectAsync(request.UserInvestmentObjectsId, cancellationToken);
 
         if (userInvestmentObjects is null)
-            return Unit.Value;
+            return;
 
         var amount = new Amount(request.Count, request.Currency, request.Price);
         var date = new Date(request.Date);
@@ -36,6 +36,5 @@ internal class AddTransactionToInvestmentObjectHandler : IRequestHandler<AddTran
         _userInvestmentObjectsService.AddTransaction(userInvestmentObjects, request.InvestmentObjectId, amount, date);
         await _userInvestmentObjectsRepository.UpdateAsync(userInvestmentObjects, cancellationToken);
 
-        return Unit.Value;
     }
 }

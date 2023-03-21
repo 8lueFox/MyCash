@@ -1,5 +1,3 @@
-using MyCash.Micro.Exceptions;
-
 namespace MyCash.Wallets.Core.Exceptions;
 
 public class InvalidAggregateIdException : CustomException

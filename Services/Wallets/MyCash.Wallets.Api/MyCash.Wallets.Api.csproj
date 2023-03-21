@@ -11,8 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\MyCash.API\MyCash.API.csproj" />
-    <ProjectReference Include="..\..\..\MyCash.Framework\MyCash.Framework.csproj" />
     <ProjectReference Include="..\MyCash.Wallets.Infrastructure\MyCash.Wallets.Infrastructure.csproj" />
   </ItemGroup>
 

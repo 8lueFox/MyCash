@@ -1,6 +1,4 @@
-﻿using MyCash.Micro.Exceptions;
-
-namespace MyCash.Wallets.Core.Exceptions;
+﻿namespace MyCash.Wallets.Core.Exceptions;
 
 public class UserNotFoundException : CustomException
 {

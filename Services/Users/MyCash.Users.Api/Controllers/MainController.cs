@@ -1,11 +1,12 @@
 using Micro.Framework;
+using Micro.WebAPI;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MyCash.Users.Api.Controllers
 {
     [ApiController]
     [Route("")]
-    public class MainController : ControllerBase
+    public class MainController : BaseController
     {
         private readonly ILogger<MainController> _logger;
         private readonly AppInfo _appInfo;

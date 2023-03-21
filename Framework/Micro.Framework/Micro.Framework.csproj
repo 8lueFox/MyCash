@@ -15,7 +15,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Micro.Auth\Micro.Auth.csproj" />
+    <ProjectReference Include="..\Micro.DAL\Micro.DAL.csproj" />
     <ProjectReference Include="..\Micro.Security\Micro.Security.csproj" />
+    <ProjectReference Include="..\Micro.WebAPI\Micro.WebAPI.csproj" />
+    <ProjectReference Include="..\Micro\Micro.csproj" />
   </ItemGroup>
 
 </Project>
