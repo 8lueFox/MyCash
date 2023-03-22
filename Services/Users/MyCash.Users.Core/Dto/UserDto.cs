@@ -1,6 +1,8 @@
-﻿namespace MyCash.Users.Core.Dto;
+﻿using Micro.Messaging.RabbitMQ;
 
-public class UserDto
+namespace MyCash.Users.Core.Dto;
+
+public class UserDto : BusPublishDto
 {
     public Guid UserId { get; set; }
     public string Email { get; set; } = string.Empty;

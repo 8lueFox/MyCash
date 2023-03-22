@@ -3,5 +3,5 @@
 public interface IMessageBusClient
 {
     void Publish<T>(T obj)
-        where T : BusPublishDto;
+        where T : class;
 }

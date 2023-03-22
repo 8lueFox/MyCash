@@ -1,5 +1,7 @@
 ﻿using MediatR;
+using Micro.Messaging.RabbitMQ;
 using Microsoft.Extensions.DependencyInjection;
+using MyCash.Wallets.Application.EventProcessing;
 using MyCash.Wallets.Core.DomainServices;
 using MyCash.Wallets.Core.Policies;
 using System.Reflection;
@@ -20,6 +22,7 @@ public static class Extensions
 
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Extensions).Assembly));
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        services.AddSingleton<IEventProcessor, EventProcessor>();
 
         return services;
     }

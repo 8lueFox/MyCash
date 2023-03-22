@@ -33,9 +33,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.DAL", "Framework\Micr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro", "Framework\Micro\Micro.csproj", "{7AC66101-7F7E-4B84-A5F4-A3F83B0E232F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.WebAPI", "Framework\Micro.WebAPI\Micro.WebAPI.csproj", "{43FC858F-B96E-48EC-81D9-FD7D40F231A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.WebAPI", "Framework\Micro.WebAPI\Micro.WebAPI.csproj", "{43FC858F-B96E-48EC-81D9-FD7D40F231A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Micro.Messaging.RabbitMQ", "Framework\Micro.Messaging.RabbitMQ\Micro.Messaging.RabbitMQ.csproj", "{3CCBA3C6-0979-4795-896E-EE6969688D11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Messaging.RabbitMQ", "Framework\Micro.Messaging.RabbitMQ\Micro.Messaging.RabbitMQ.csproj", "{3CCBA3C6-0979-4795-896E-EE6969688D11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

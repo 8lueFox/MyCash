@@ -1,4 +1,5 @@
 ﻿using Micro.Auth;
+using Micro.Messaging.RabbitMQ;
 using Micro.Security;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +20,7 @@ public static class Startup
         services.AddMicro();
         services.AddAuth(config);
         services.AddSecurity();
+        services.AddRabbitMq(config);
 
         return services;
     }

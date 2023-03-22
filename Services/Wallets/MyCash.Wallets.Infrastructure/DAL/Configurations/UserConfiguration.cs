@@ -13,6 +13,8 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id)
             .HasConversion(x => x.Value, x => new UserId(x));
+        builder.Property(x => x.ExternalId)
+            .HasConversion(x => x.Value, x => new UserId(x));
         builder.Property(x => x.UserPackage)
             .HasConversion(x => x.Value, x => new UserPackage(x))
             .IsRequired();

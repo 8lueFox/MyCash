@@ -22,7 +22,7 @@ internal class WalletDataInitializator
 
     internal async Task InitAsync(CancellationToken cancellationToken)
     {
-        var user = new User(Guid.Parse("11111111-1111-1111-1111-111111111111"), "Standard");
+        var user = new User(Guid.Parse("11111111-1111-1111-1111-111111111111"), Guid.Parse("11111111-1111-1111-1111-111111111111"), "Standard");
         await _dbContext.Users.AddAsync(user, cancellationToken);
         await _dbContext.SaveChangesAsync(cancellationToken);
 

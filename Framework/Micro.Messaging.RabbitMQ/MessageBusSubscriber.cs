@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Micro.Messaging.RabbitMQ;
 
-public abstract class MessageBusSubscriber : BackgroundService
+public class MessageBusSubscriber : BackgroundService
 {
     private readonly IEventProcessor _eventProcessor;
     private IConnection _connection;
@@ -20,7 +20,7 @@ public abstract class MessageBusSubscriber : BackgroundService
         var factory = new ConnectionFactory
         {
             HostName = options.Value.Host,
-            Port = options.Value.Port,
+            Port = int.Parse(options.Value.Port),
             UserName = options.Value.Username,
             Password = options.Value.Password
         };

@@ -2,8 +2,8 @@
 
 public sealed class RabbitMQOptions
 {
-    public string? Host { get; }
-    public int Port { get; }
-    public string? Username { get; }
-    public string? Password { get; }
+    public string? Host { get; set; }
+    public string? Port { get; set; }
+    public string? Username { get; set; }
+    public string? Password { get; set; }
 }

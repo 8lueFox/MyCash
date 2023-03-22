@@ -18,7 +18,7 @@ internal class MessageBusClient : IMessageBusClient
         var factory = new ConnectionFactory
         {
             HostName = _options.Host,
-            Port = _options.Port,
+            Port = int.Parse(_options.Port),
             UserName = _options.Username,
             Password = _options.Password
         };
@@ -39,7 +39,7 @@ internal class MessageBusClient : IMessageBusClient
     }
 
     public void Publish<T>(T obj)
-        where T : BusPublishDto
+        where T : class
     {
         var message = JsonSerializer.Serialize<T>(obj);
 

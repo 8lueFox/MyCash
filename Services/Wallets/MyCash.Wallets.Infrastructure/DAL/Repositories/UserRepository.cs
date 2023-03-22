@@ -22,6 +22,9 @@ internal sealed class UserRepository : IUserRepository
         await _context.SaveChangesAsync();
     }
 
+    public async Task<bool> ExternalUserExists(UserId externalUserId)
+        => await _users.SingleOrDefaultAsync(x => x.ExternalId == externalUserId) is not null;
+
     public Task<User?> GetAsync(UserId userId, CancellationToken cancellationToken = default)
         => _users.SingleOrDefaultAsync(x => x.Id == userId, cancellationToken);
         

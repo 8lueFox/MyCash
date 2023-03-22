@@ -1,6 +1,8 @@
 ﻿using MediatR;
+using Micro.Messaging.RabbitMQ;
 using Micro.Security.Encryption;
 using Microsoft.Extensions.Logging;
+using MyCash.Users.Core.Dto;
 using MyCash.Users.Core.Entities;
 using MyCash.Users.Core.Exceptions;
 using MyCash.Users.Core.Repositories;
@@ -20,17 +22,20 @@ internal sealed class SingUpRequestHandler : IRequestHandler<SignUpRequest>
     private readonly IRoleRepository _roleRepository;
     private readonly IPasswordManager _passwordManager;
     private readonly ILogger<SingUpRequestHandler> _logger;
+    private readonly IMessageBusClient _messageBus;
 
     public SingUpRequestHandler
-        (IUserRepository userRepository, 
-        IRoleRepository roleRepository, 
-        IPasswordManager passwordManager, 
-        ILogger<SingUpRequestHandler> logger)
+        (IUserRepository userRepository,
+        IRoleRepository roleRepository,
+        IPasswordManager passwordManager,
+        ILogger<SingUpRequestHandler> logger,
+        IMessageBusClient messageBus)
     {
         _userRepository = userRepository;
         _roleRepository = roleRepository;
         _passwordManager = passwordManager;
         _logger = logger;
+        _messageBus = messageBus;
     }
 
     public async Task Handle(SignUpRequest request, CancellationToken cancellationToken)
@@ -65,6 +70,8 @@ internal sealed class SingUpRequestHandler : IRequestHandler<SignUpRequest>
         };
 
         await _userRepository.AddAsync(user);
+        _messageBus.Publish<UserBusDto>(new UserBusDto(user.Id, user.Package.Value, "SignUpUser"));
+
         _logger.LogInformation($"User with ID: '{user.Id}' has signed up.");
     }
 }
