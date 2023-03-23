@@ -37,6 +37,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.WebAPI", "Framework\M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Messaging.RabbitMQ", "Framework\Micro.Messaging.RabbitMQ\Micro.Messaging.RabbitMQ.csproj", "{3CCBA3C6-0979-4795-896E-EE6969688D11}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PriceScraper", "PriceScraper", "{3C4ACA97-2695-4C3F-8FDE-B1DBF15E091A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.PriceScraper.Core", "Services\PriceScraper\MyCash.PriceScraper.Core\MyCash.PriceScraper.Core.csproj", "{E7918D1C-F86A-48C1-8928-5F6A59C51315}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.PriceScraper.Infrastructure", "Services\PriceScraper\MyCash.PriceScraper.Infrastructure\MyCash.PriceScraper.Infrastructure.csproj", "{77C8C371-CC54-42EB-86CC-A2285846E109}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.PriceScraper.Api", "Services\PriceScraper\MyCash.PriceScraper.Api\MyCash.PriceScraper.Api.csproj", "{C1B52A70-715B-41D2-8F8E-0721EF5D06C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +103,18 @@ Global
 		{3CCBA3C6-0979-4795-896E-EE6969688D11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CCBA3C6-0979-4795-896E-EE6969688D11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CCBA3C6-0979-4795-896E-EE6969688D11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7918D1C-F86A-48C1-8928-5F6A59C51315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7918D1C-F86A-48C1-8928-5F6A59C51315}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7918D1C-F86A-48C1-8928-5F6A59C51315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7918D1C-F86A-48C1-8928-5F6A59C51315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77C8C371-CC54-42EB-86CC-A2285846E109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77C8C371-CC54-42EB-86CC-A2285846E109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77C8C371-CC54-42EB-86CC-A2285846E109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77C8C371-CC54-42EB-86CC-A2285846E109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1B52A70-715B-41D2-8F8E-0721EF5D06C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1B52A70-715B-41D2-8F8E-0721EF5D06C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1B52A70-715B-41D2-8F8E-0721EF5D06C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1B52A70-715B-41D2-8F8E-0721EF5D06C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +135,10 @@ Global
 		{7AC66101-7F7E-4B84-A5F4-A3F83B0E232F} = {00FB371E-3FF9-47BD-BB6F-6C4524D0E61D}
 		{43FC858F-B96E-48EC-81D9-FD7D40F231A5} = {00FB371E-3FF9-47BD-BB6F-6C4524D0E61D}
 		{3CCBA3C6-0979-4795-896E-EE6969688D11} = {00FB371E-3FF9-47BD-BB6F-6C4524D0E61D}
+		{3C4ACA97-2695-4C3F-8FDE-B1DBF15E091A} = {7BE904A7-58D9-4921-B5DE-FC143C2B07EB}
+		{E7918D1C-F86A-48C1-8928-5F6A59C51315} = {3C4ACA97-2695-4C3F-8FDE-B1DBF15E091A}
+		{77C8C371-CC54-42EB-86CC-A2285846E109} = {3C4ACA97-2695-4C3F-8FDE-B1DBF15E091A}
+		{C1B52A70-715B-41D2-8F8E-0721EF5D06C0} = {3C4ACA97-2695-4C3F-8FDE-B1DBF15E091A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6084E8DE-FCFB-4E8E-B2D6-A055ECB48969}

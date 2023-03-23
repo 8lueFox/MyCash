@@ -28,58 +28,67 @@ internal sealed class EventProcessor : IEventProcessor
             case EventType.SignUpUser:
                 AddUser(message);
                 break;
+            case EventType.StocksUpdated:
+                UpdateStocks(message);
+                break;
             default:
                 break;
         }
     }
 
-    private async void AddUser(string userMessage)
+    private async void UpdateStocks(string message)
     {
-        var userDto = JsonSerializer.Deserialize<UserBusDto>(userMessage);
-
-        using (var scope = _serviceScopeFactory.CreateScope())
-        {
-            var repo = scope.ServiceProvider.GetRequiredService<IUserRepository>();
-            try
-            {
-                var user = _mapper.Map<User>(userDto);
-                if (!await repo.ExternalUserExists(user.ExternalId))
-                {
-                    await repo.AddAsync(user, CancellationToken.None);
-                }
-                else
-                {
-                    Console.WriteLine($"--> User with ID: {user.ExternalId} already exists...");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"--> Couldn't add User to db: {ex.Message}");
-            }
-        }
+        throw new NotImplementedException();
     }
 
-    private EventType DetermineEvent(string message)
+    private async void AddUser(string userMessage)
+{
+    var userDto = JsonSerializer.Deserialize<UserBusDto>(userMessage);
+
+    using (var scope = _serviceScopeFactory.CreateScope())
     {
-        var eventType = JsonSerializer.Deserialize<GenericEventDto>(message);
-
-        if (eventType is null)
-            return EventType.Udetermined;
-
-        switch (eventType.Event)
+        var repo = scope.ServiceProvider.GetRequiredService<IUserRepository>();
+        try
         {
-            case "SignUpUser":
-                return EventType.SignUpUser;
-            default:
-                return EventType.Udetermined;
+            var user = _mapper.Map<User>(userDto);
+            if (!await repo.ExternalUserExists(user.ExternalId))
+            {
+                await repo.AddAsync(user, CancellationToken.None);
+            }
+            else
+            {
+                Console.WriteLine($"--> User with ID: {user.ExternalId} already exists...");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"--> Couldn't add User to db: {ex.Message}");
         }
     }
 }
 
+private EventType DetermineEvent(string message)
+{
+    var eventType = JsonSerializer.Deserialize<GenericEventDto>(message);
+
+    if (eventType is null)
+        return EventType.Undetermined;
+
+    switch (eventType.Event)
+    {
+        case "SignUpUser":
+            return EventType.SignUpUser;
+        default:
+            return EventType.Undetermined;
+    }
+}
+}
+
 enum EventType
 {
-    Udetermined,
-    SignUpUser
+    Undetermined,
+    SignUpUser,
+    StocksUpdated
 }
 
 class GenericEventDto
