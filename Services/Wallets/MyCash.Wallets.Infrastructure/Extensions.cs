@@ -14,6 +14,7 @@ public static class Extensions
                 opt.UseInMemoryDatabase("WalletsDB"))
             .AddScoped<WalletDataInitializator>()
             .AddScoped<IUserRepository, UserRepository>()
+            .AddScoped<IStockRepository, StockRepository>()
             .AddScoped<IUserInvestmentObjectRepository, UserInvestmentObjectsRepository>();
 
     public async static void InitDb(IServiceProvider serviceProvider, CancellationToken cancellationToken)

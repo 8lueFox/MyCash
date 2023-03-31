@@ -43,9 +43,10 @@ public class WalletsController : BaseController
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<UserInvestmentObjectsDto>>> GetUserInvestmentObjects([FromQuery] GetUserInvestmentObjectsRequest request)
+    [Authorize]
+    public async Task<ActionResult<IEnumerable<UserInvestmentObjectsDto>>> GetUserInvestmentObjects()
     {
-        var response = await Mediator.Send(request);
+        var response = await Mediator.Send(new GetUserInvestmentObjectsRequest(UserId(HttpContext)));
 
         return Ok(response);
     }

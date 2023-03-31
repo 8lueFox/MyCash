@@ -10,8 +10,8 @@ public class InvestmentObjectProfile : Profile
     {
         CreateMap<InvestmentObject, InvestmentObjectDto>()
             .ForMember(x => x.Name, opt => opt.MapFrom(x => x.Name))
-            .ForMember(x => x.Currency, opt => opt.MapFrom(x => x.Transactions.Last().Amount.Currency))
-            .ForMember(x => x.Count, opt => opt.MapFrom(x => x.Transactions.Sum(x => x.Amount.Count)))
-            .ForMember(x => x.AvgPrice, opt => opt.MapFrom(x => x.Transactions.Sum(x => x.Amount.Count) / x.Transactions.Sum(x => x.Amount.Price)));
+            .ForMember(x => x.Currency, opt => opt.MapFrom(x => x.Transactions == null || x.Transactions.Count == 0 ? "Uknown" : x.Transactions.Last().Amount.Currency))
+            .ForMember(x => x.Count, opt => opt.MapFrom(x => x.Transactions == null ? 0 : x.Transactions.Sum(x => x.Amount.Count)))
+            .ForMember(x => x.AvgPrice, opt => opt.MapFrom(x => x.Transactions == null || x.Transactions.Count == 0 ? 0 : x.Transactions.Sum(x => x.Amount.Price * x.Amount.Count) / x.Transactions.Sum(x => x.Amount.Count)));
     }
 }

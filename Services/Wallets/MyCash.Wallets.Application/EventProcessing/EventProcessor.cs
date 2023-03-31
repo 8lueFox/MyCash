@@ -38,50 +38,58 @@ internal sealed class EventProcessor : IEventProcessor
 
     private async void UpdateStocks(string message)
     {
-        throw new NotImplementedException();
+        var stockBusDto = JsonSerializer.Deserialize<StocksBusDto>(message);
+
+        using (var scope = _serviceScopeFactory.CreateScope())
+        {
+            var repo = scope.ServiceProvider.GetRequiredService<IStockRepository>();
+
+            var stocks = _mapper.Map<IEnumerable<Stock>>(stockBusDto.Stocks);
+            ///TODO: po drugim pobraniu danych się wywala
+            await repo.AddOrUpdateRangeAsync(stocks, CancellationToken.None);
+        }
     }
 
     private async void AddUser(string userMessage)
-{
-    var userDto = JsonSerializer.Deserialize<UserBusDto>(userMessage);
-
-    using (var scope = _serviceScopeFactory.CreateScope())
     {
-        var repo = scope.ServiceProvider.GetRequiredService<IUserRepository>();
-        try
+        var userDto = JsonSerializer.Deserialize<UserBusDto>(userMessage);
+
+        using (var scope = _serviceScopeFactory.CreateScope())
         {
-            var user = _mapper.Map<User>(userDto);
-            if (!await repo.ExternalUserExists(user.ExternalId))
+            var repo = scope.ServiceProvider.GetRequiredService<IUserRepository>();
+            try
             {
-                await repo.AddAsync(user, CancellationToken.None);
+                var user = _mapper.Map<User>(userDto);
+                if (!await repo.ExternalUserExists(user.ExternalId))
+                {
+                    await repo.AddAsync(user, CancellationToken.None);
+                }
+                else
+                {
+                    Console.WriteLine($"--> User with ID: {user.ExternalId} already exists...");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine($"--> User with ID: {user.ExternalId} already exists...");
+                Console.WriteLine($"--> Couldn't add User to db: {ex.Message}");
             }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"--> Couldn't add User to db: {ex.Message}");
         }
     }
-}
 
-private EventType DetermineEvent(string message)
-{
-    var eventType = JsonSerializer.Deserialize<GenericEventDto>(message);
-
-    if (eventType is null)
-        return EventType.Undetermined;
-
-    switch (eventType.Event)
+    private EventType DetermineEvent(string message)
     {
-        case "SignUpUser":
-            return EventType.SignUpUser;
-        default:
+        var eventType = JsonSerializer.Deserialize<GenericEventDto>(message);
+
+        if (eventType is null)
             return EventType.Undetermined;
+
+        return eventType.Event switch
+        {
+            "SignUpUser" => EventType.SignUpUser,
+            "StocksUpdated" => EventType.StocksUpdated,
+            _ => EventType.Undetermined
+        };
     }
-}
 }
 
 enum EventType

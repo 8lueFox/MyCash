@@ -22,6 +22,6 @@ public record GetInvestmentObjectRequestHandler : IRequestHandler<GetInvestmentO
     {
         var response = await _userInvestmentObjectRepository.GetInvestmentObject(request.InvestmentObjectId, cancellationToken);
 
-        return _mapper.Map<InvestmentObjectDto>(response);
+        return _mapper.Map<InvestmentObjectDto>(response!);
     }
 }

@@ -58,7 +58,7 @@ internal class MessageBusClient : IMessageBusClient
 
         _channel.BasicPublish(exchange: "trigger", routingKey: "", basicProperties: null, body: body);
 
-        Console.WriteLine($"--> RabbitMQ We have sent {message}");
+        Console.WriteLine($"--> RabbitMQ We have sent {message.Substring(0, 50)}...");
     }
 
     private void RabbitMQ_ConnectionShutdown(object? sender, ShutdownEventArgs e)

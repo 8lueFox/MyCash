@@ -9,6 +9,7 @@ internal class WalletDbContext : DbContext
     public DbSet<Transaction> Transactions { get; set; } = null!;
     public DbSet<InvestmentObject> InvestmentObjects { get; set; } = null!;
     public DbSet<UserInvestmentObjects> UsersInvestmentObjects { get; set; } = null!;
+    public DbSet<Stock> Stocks { get; set; } = null!;
 
     public WalletDbContext(DbContextOptions<WalletDbContext> options)
         : base(options)
