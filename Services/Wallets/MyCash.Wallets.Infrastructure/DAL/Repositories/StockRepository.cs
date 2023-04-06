@@ -18,7 +18,7 @@ internal class StockRepository : IStockRepository
     {
         foreach (var currentItem in stocks)
         {
-            var stock = await _dbContext.Stocks.SingleOrDefaultAsync(x => x.Name == currentItem.Name, cancellationToken);
+            var stock = await _dbContext.Stocks.FirstOrDefaultAsync(x => x.Name == currentItem.Name, cancellationToken);
             if (stock is null)
             {
                 currentItem.Id = Guid.NewGuid();
@@ -31,4 +31,7 @@ internal class StockRepository : IStockRepository
         }
         await _dbContext.SaveChangesAsync();
     }
+
+    public async Task<Stock> GetStockByName(string name, CancellationToken cancellationToken)
+        => await _dbContext.Stocks.FirstOrDefaultAsync(x => x.Name.ToLower().Contains(name.ToLower()), cancellationToken);
 }

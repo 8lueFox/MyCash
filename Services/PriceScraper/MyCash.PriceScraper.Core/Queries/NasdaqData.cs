@@ -16,7 +16,7 @@ public class Headers
     public string marketCap { get; set; }
     public string country { get; set; }
     public string ipoyear { get; set; }
-    public string volume { get; set; }
+    public string volume { get; set; } 
     public string sector { get; set; }
     public string industry { get; set; }
     public string url { get; set; }

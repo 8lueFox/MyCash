@@ -19,6 +19,7 @@ namespace MyCash.PriceScraper.Api.Controllers
         {
             return _appInfo;
         }
+
         [HttpGet("/startScraping")]
         public async Task<ActionResult> StartScraping()
         {

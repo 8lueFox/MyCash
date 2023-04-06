@@ -13,7 +13,7 @@ public class StockProfile : Profile
             .ForMember(dest => dest.Symbol, opt => opt.MapFrom(src => src.symbol))
             .ForMember(dest => dest.Ipoyear, opt => opt.MapFrom(src => src.ipoyear))
             .ForMember(dest => dest.MarketCap, opt => opt.MapFrom(src => src.marketCap == "" ? null : src.marketCap.Replace('.', ',')))
-            .ForMember(dest => dest.LastSale, opt => opt.MapFrom(src => src.lastsale == "" ? null : src.lastsale.Trim('$').Replace('.', ',')))
+            .ForMember(dest => dest.LastSale, opt => opt.MapFrom(src => src.lastsale == "" ? null : src.lastsale.Trim('$')))
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.name))
             .ForMember(dest => dest.Change, opt => opt.MapFrom(src => src.netchange == "" ? null : src.netchange.Replace('.', ',')))
             .ForMember(dest => dest.Country, opt => opt.MapFrom(src => src.country))

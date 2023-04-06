@@ -6,5 +6,6 @@ public class InvestmentObjectDto
     public string? Type { get; set; }
     public decimal Count { get; set; }
     public decimal AvgPrice { get; set; }
+    public decimal CurrentValue { get; set; }
     public string? Currency { get; set; }
 }
