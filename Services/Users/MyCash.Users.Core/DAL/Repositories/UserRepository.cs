@@ -21,6 +21,9 @@ internal class UserRepository : IUserRepository
         await _context.SaveChangesAsync();
     }
 
+    public async Task<IEnumerable<User>> GetAllAsync()
+        => await _users.ToListAsync();
+
     public Task<User?> GetAsync(string email)   
         => _users
             //.Include(x => x.Role)

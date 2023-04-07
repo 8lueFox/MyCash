@@ -20,7 +20,7 @@ public record GetInvestmentObjectRequestHandler : IRequestHandler<GetInvestmentO
         _stockRepository = stockRepository;
     }
 
-    public async Task<InvestmentObjectDto> Handle(GetInvestmentObjectRequest request, CancellationToken cancellationToken)
+    public async Task<InvestmentObjectDto?> Handle(GetInvestmentObjectRequest request, CancellationToken cancellationToken)
     {
         var io = await _userInvestmentObjectRepository.GetInvestmentObject(request.InvestmentObjectId, cancellationToken);
 

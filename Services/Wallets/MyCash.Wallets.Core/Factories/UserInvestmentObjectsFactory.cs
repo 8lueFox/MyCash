@@ -16,9 +16,8 @@ public class UserInvestmentObjectsFactory : IUserInvestmentObjectsFactory
     public async Task<UserInvestmentObjects> CreateAsync(UserId userId, UserInvestmentObjectName name, CancellationToken cancellationToken = default)
     {
         var user = await _userRepository.GetAsync(userId, cancellationToken);
-        if (user is null)
-            throw new UserNotFoundException(userId);
-
-        return new UserInvestmentObjects(AggregateId.Create(), user, name);
+        return user is null ? 
+            throw new UserNotFoundException(userId) : 
+            new UserInvestmentObjects(AggregateId.Create(), user, name);
     }
 }

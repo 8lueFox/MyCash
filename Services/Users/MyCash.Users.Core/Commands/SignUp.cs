@@ -72,6 +72,6 @@ internal sealed class SingUpRequestHandler : IRequestHandler<SignUpRequest>
         await _userRepository.AddAsync(user);
         _messageBus.Publish<UserBusDto>(new UserBusDto(user.Id, user.Package.Value, "SignUpUser"));
 
-        _logger.LogInformation($"User with ID: '{user.Id}' has signed up.");
+        _logger.LogInformation("User with ID: '{Id}' has signed up.", user.Id);
     }
 }

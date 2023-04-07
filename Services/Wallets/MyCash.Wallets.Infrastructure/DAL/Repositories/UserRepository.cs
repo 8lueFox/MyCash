@@ -19,7 +19,7 @@ internal sealed class UserRepository : IUserRepository
     public async Task AddAsync(User user, CancellationToken cancellationToken = default)
     {
         await _users.AddAsync(user, cancellationToken);
-        await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<bool> ExternalUserExists(UserId externalUserId)

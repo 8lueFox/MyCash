@@ -9,9 +9,9 @@ namespace Micro.Messaging.RabbitMQ;
 public class MessageBusSubscriber : BackgroundService
 {
     private readonly IEventProcessor _eventProcessor;
-    private IConnection _connection;
-    private IModel _channel;
-    private string _queueName;
+    private readonly IConnection _connection;
+    private readonly IModel _channel;
+    private readonly string _queueName;
 
     public MessageBusSubscriber(IEventProcessor eventProcessor, IOptions<RabbitMQOptions> options)
     {

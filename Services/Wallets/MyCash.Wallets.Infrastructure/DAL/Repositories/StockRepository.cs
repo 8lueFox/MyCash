@@ -29,7 +29,7 @@ internal class StockRepository : IStockRepository
                 stock.Update(currentItem);
             }
         }
-        await _dbContext.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<Stock> GetStockByName(string name, CancellationToken cancellationToken)

@@ -11,12 +11,10 @@ public record GetUserRequest(Guid UserId) : IRequest<UserDto>;
 internal class GetUserRequestHandler : IRequestHandler<GetUserRequest, UserDto>
 {
     private readonly UserDbContext _userDbContext;
-    private readonly ITokenStorage _tokenStorage;
 
-    public GetUserRequestHandler(UserDbContext userDbContext, ITokenStorage tokenStorage)
+    public GetUserRequestHandler(UserDbContext userDbContext)
     {
         _userDbContext = userDbContext;
-        _tokenStorage = tokenStorage;
     }
 
     public async Task<UserDto> Handle(GetUserRequest request, CancellationToken cancellationToken)
