@@ -2,6 +2,7 @@
 using Micro.Messaging.RabbitMQ;
 using Microsoft.Extensions.DependencyInjection;
 using MyCash.Wallets.Application.EventProcessing;
+using MyCash.Wallets.Application.Services;
 using MyCash.Wallets.Core.DomainServices;
 using MyCash.Wallets.Core.Policies;
 using System.Reflection;
@@ -14,6 +15,7 @@ public static class Extensions
     {
         var assemblies = typeof(IInvestmentObjectPolicy).Assembly;
         services.AddSingleton<IUserInvestmentObjectsService, UserInvestmentObjectsService>();
+        services.AddScoped<IUserDataClient, UserDataClient>();
 
         services.Scan(s => s.FromAssemblies(assemblies)
             .AddClasses(c => c.AssignableTo(typeof(IInvestmentObjectPolicy)))

@@ -26,6 +26,7 @@ public static class Startup
                 opt.UseInMemoryDatabase("MyCashDb"))
             .AddSingleton<IHttpContextAccessor, HttpContextAccessor>()
             .AddInitalizer<UserDbInitalizer>()
+            .AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies())
             .AddDAL();
     }
 }
