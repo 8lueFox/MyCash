@@ -16,6 +16,7 @@ public static class Extensions
         var assemblies = typeof(IInvestmentObjectPolicy).Assembly;
         services.AddSingleton<IUserInvestmentObjectsService, UserInvestmentObjectsService>();
         services.AddScoped<IUserDataClient, UserDataClient>();
+        services.AddScoped<IStockDataClient, StockDataClient>();
 
         services.Scan(s => s.FromAssemblies(assemblies)
             .AddClasses(c => c.AssignableTo(typeof(IInvestmentObjectPolicy)))

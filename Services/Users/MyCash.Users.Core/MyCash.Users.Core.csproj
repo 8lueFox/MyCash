@@ -19,7 +19,6 @@
 
 	<ItemGroup>
 		<Folder Include="DAL\Migrations\" />
-		<Folder Include="Protos\" />
 	</ItemGroup>
 	<ItemGroup>
 		<Protobuf Include="Protos\users.proto" GrpcServices="Server" />

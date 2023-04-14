@@ -5,4 +5,5 @@ namespace MyCash.PriceScraper.Core.Repositories;
 public interface IStockRepository
 {
     Task AddRangeAsync(IEnumerable<Stock> entities, CancellationToken cancellationToken = default);
+    Task<IEnumerable<Stock>> GetAllStocks(CancellationToken cancellationToken = default);
 }

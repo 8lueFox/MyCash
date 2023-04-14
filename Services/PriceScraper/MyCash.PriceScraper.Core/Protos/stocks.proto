@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "MyCash.PriceScraper.Core";
+
+message GetAllRequest{}
+
+service GrpcStock{
+	rpc GetAllStocks(GetAllRequest) returns (StockResponse);
+}
+
+message GrpcStockModel{
+	string symbol = 1;
+	string name = 2;
+	string lastSale = 3;
+	string netChange = 4;
+	string change = 5;
+	string pctChange = 6;
+	string volumen = 7;
+	string marketCap = 8;
+	string country = 9;
+	string ipoYear = 10;
+	string industry = 11;
+	string sector = 12;
+	string url = 13;
+	google.protobuf.Timestamp fetchedData = 14;
+}
+
+message StockResponse{
+	repeated GrpcStockModel stock = 1;
+}

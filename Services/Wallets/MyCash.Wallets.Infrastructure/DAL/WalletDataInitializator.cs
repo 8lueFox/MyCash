@@ -12,16 +12,19 @@ internal class WalletDataInitializator
     private readonly ILogger<WalletDataInitializator> _logger;
     private readonly IEnumerable<IInvestmentObjectPolicy> _investmentObjectPolicies;
     private readonly IUserDataClient _userDataClient;
+    private readonly IStockDataClient _stockDataClient;
 
     public WalletDataInitializator(WalletDbContext dbContext, 
         ILogger<WalletDataInitializator> logger, 
         IEnumerable<IInvestmentObjectPolicy> investmentObjectPolicies, 
-        IUserDataClient userDataClient)
+        IUserDataClient userDataClient,
+        IStockDataClient stockDataClient)
     {
         _dbContext = dbContext;
         _logger = logger;
         _investmentObjectPolicies = investmentObjectPolicies;
         _userDataClient = userDataClient;
+        _stockDataClient = stockDataClient;
     }
 
     internal async Task InitAsync(CancellationToken cancellationToken)
@@ -33,7 +36,12 @@ internal class WalletDataInitializator
             if (!_dbContext.Users.Any(y => y.ExternalId == x.ExternalId))
                 await _dbContext.Users.AddAsync(x);
         });
-        await _dbContext.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync(cancellationToken);
+
+        var stocks = _stockDataClient.ReturnAllStocks();
+
+        await _dbContext.Stocks.AddRangeAsync(stocks);
+        await _dbContext.SaveChangesAsync(cancellationToken);
 
         //var user = new User(Guid.Parse("11111111-1111-1111-1111-111111111111"), Guid.Parse("11111111-1111-1111-1111-111111111111"), "Standard");
         //await _dbContext.Users.AddAsync(user, cancellationToken);
