@@ -39,11 +39,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Micro.Messaging.RabbitMQ", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PriceScraper", "PriceScraper", "{3C4ACA97-2695-4C3F-8FDE-B1DBF15E091A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.PriceScraper.Core", "Services\PriceScraper\MyCash.PriceScraper.Core\MyCash.PriceScraper.Core.csproj", "{E7918D1C-F86A-48C1-8928-5F6A59C51315}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.PriceScraper.Core", "Services\PriceScraper\MyCash.PriceScraper.Core\MyCash.PriceScraper.Core.csproj", "{E7918D1C-F86A-48C1-8928-5F6A59C51315}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.PriceScraper.Infrastructure", "Services\PriceScraper\MyCash.PriceScraper.Infrastructure\MyCash.PriceScraper.Infrastructure.csproj", "{77C8C371-CC54-42EB-86CC-A2285846E109}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.PriceScraper.Infrastructure", "Services\PriceScraper\MyCash.PriceScraper.Infrastructure\MyCash.PriceScraper.Infrastructure.csproj", "{77C8C371-CC54-42EB-86CC-A2285846E109}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.PriceScraper.Api", "Services\PriceScraper\MyCash.PriceScraper.Api\MyCash.PriceScraper.Api.csproj", "{C1B52A70-715B-41D2-8F8E-0721EF5D06C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.PriceScraper.Api", "Services\PriceScraper\MyCash.PriceScraper.Api\MyCash.PriceScraper.Api.csproj", "{C1B52A70-715B-41D2-8F8E-0721EF5D06C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{492F88E9-3C5C-4026-8EB2-1A7B02E6E775}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Benchmarks", "Benchmarks", "{2C74F26F-EF85-4376-9701-57B3822A2B27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.Tests.Benchmarks.Mapper", "Tests\Benchmarks\MyCash.Tests.Benchmarks.Mapper\MyCash.Tests.Benchmarks.Mapper.csproj", "{67243596-6CD9-44F3-B7AB-96D9D1BB32F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,6 +121,10 @@ Global
 		{C1B52A70-715B-41D2-8F8E-0721EF5D06C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1B52A70-715B-41D2-8F8E-0721EF5D06C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1B52A70-715B-41D2-8F8E-0721EF5D06C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67243596-6CD9-44F3-B7AB-96D9D1BB32F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67243596-6CD9-44F3-B7AB-96D9D1BB32F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67243596-6CD9-44F3-B7AB-96D9D1BB32F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67243596-6CD9-44F3-B7AB-96D9D1BB32F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -139,6 +149,8 @@ Global
 		{E7918D1C-F86A-48C1-8928-5F6A59C51315} = {3C4ACA97-2695-4C3F-8FDE-B1DBF15E091A}
 		{77C8C371-CC54-42EB-86CC-A2285846E109} = {3C4ACA97-2695-4C3F-8FDE-B1DBF15E091A}
 		{C1B52A70-715B-41D2-8F8E-0721EF5D06C0} = {3C4ACA97-2695-4C3F-8FDE-B1DBF15E091A}
+		{2C74F26F-EF85-4376-9701-57B3822A2B27} = {492F88E9-3C5C-4026-8EB2-1A7B02E6E775}
+		{67243596-6CD9-44F3-B7AB-96D9D1BB32F3} = {2C74F26F-EF85-4376-9701-57B3822A2B27}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6084E8DE-FCFB-4E8E-B2D6-A055ECB48969}
