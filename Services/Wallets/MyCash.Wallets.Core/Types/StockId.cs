@@ -12,7 +12,7 @@ public record StockId
         Value = value;
     }
 
-    public static TransactionId Create() => new(Guid.NewGuid());
+    public static StockId Create() => new(Guid.NewGuid());
 
     public static implicit operator Guid(StockId obj)
         => obj.Value;

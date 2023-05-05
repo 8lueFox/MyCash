@@ -49,7 +49,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{492F88E9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Benchmarks", "Benchmarks", "{2C74F26F-EF85-4376-9701-57B3822A2B27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.Tests.Benchmarks.Mapper", "Tests\Benchmarks\MyCash.Tests.Benchmarks.Mapper\MyCash.Tests.Benchmarks.Mapper.csproj", "{67243596-6CD9-44F3-B7AB-96D9D1BB32F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.Tests.Benchmarks.Mapper", "Tests\Benchmarks\MyCash.Tests.Benchmarks.Mapper\MyCash.Tests.Benchmarks.Mapper.csproj", "{67243596-6CD9-44F3-B7AB-96D9D1BB32F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WealthManager", "WealthManager", "{129D148E-6F52-422C-95A0-B727A1BCC600}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.WealthManager.Core", "Services\WealthManager\MyCash.WealthManager.Core\MyCash.WealthManager.Core.csproj", "{F76450A9-F634-43A3-A17C-41957ADBEF81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -125,6 +129,10 @@ Global
 		{67243596-6CD9-44F3-B7AB-96D9D1BB32F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{67243596-6CD9-44F3-B7AB-96D9D1BB32F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{67243596-6CD9-44F3-B7AB-96D9D1BB32F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F76450A9-F634-43A3-A17C-41957ADBEF81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F76450A9-F634-43A3-A17C-41957ADBEF81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F76450A9-F634-43A3-A17C-41957ADBEF81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F76450A9-F634-43A3-A17C-41957ADBEF81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -151,6 +159,8 @@ Global
 		{C1B52A70-715B-41D2-8F8E-0721EF5D06C0} = {3C4ACA97-2695-4C3F-8FDE-B1DBF15E091A}
 		{2C74F26F-EF85-4376-9701-57B3822A2B27} = {492F88E9-3C5C-4026-8EB2-1A7B02E6E775}
 		{67243596-6CD9-44F3-B7AB-96D9D1BB32F3} = {2C74F26F-EF85-4376-9701-57B3822A2B27}
+		{129D148E-6F52-422C-95A0-B727A1BCC600} = {7BE904A7-58D9-4921-B5DE-FC143C2B07EB}
+		{F76450A9-F634-43A3-A17C-41957ADBEF81} = {129D148E-6F52-422C-95A0-B727A1BCC600}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6084E8DE-FCFB-4E8E-B2D6-A055ECB48969}
