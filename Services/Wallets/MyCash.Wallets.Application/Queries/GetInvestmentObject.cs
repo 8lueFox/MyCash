@@ -7,7 +7,7 @@ namespace MyCash.Wallets.Application.Queries;
 
 public record GetInvestmentObjectRequest(Guid InvestmentObjectId) : IRequest<InvestmentObjectDto>;
 
-public record GetInvestmentObjectRequestHandler : IRequestHandler<GetInvestmentObjectRequest, InvestmentObjectDto>
+public class GetInvestmentObjectRequestHandler : IRequestHandler<GetInvestmentObjectRequest, InvestmentObjectDto>
 {
     private readonly IUserInvestmentObjectRepository _userInvestmentObjectRepository;
     private readonly IStockRepository _stockRepository;

@@ -4,4 +4,13 @@ public sealed class Value
 {
     public decimal Count { get; set; }
     public string Currency { get; set; } = string.Empty;
+
+    public decimal GetValueInSpecificCurrency(string currency)
+    {
+        if (currency == null || currency == Currency)
+            return Count;
+
+        //TODO: Pobieranie kursu walut
+        return Count;
+    }
 }

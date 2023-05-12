@@ -20,6 +20,13 @@ public class Family : AggregateRoot
         IncrementVersion();
     }
 
+    
+    public decimal GetSumOfExpenses(string currency)
+        => _expenses.Sum(x => x.Value.GetValueInSpecificCurrency(currency));
+
+    public decimal GetSumOfIncomes(string currency)
+        => _incomes.Sum(x => x.ValueNet.GetValueInSpecificCurrency(currency));
+
     public void AddExpense(Expense expense)
     {
         if (expense is null)
@@ -36,9 +43,9 @@ public class Family : AggregateRoot
         _incomes.Add(income);
     }
 
-    public void SetMonthlyExpenses(Value value)
+    public void SetExpectedMonthyExpenses(Value value)
     {
-        Settings.MonthyExpenses = value;
+        Settings.ExpectedMonthyExpenses = value;
     }
 
     public void DeleteExpense(Guid expenseId)
