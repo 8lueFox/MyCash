@@ -4,9 +4,9 @@ using MyCash.WealthManager.Core.ValueObjects;
 
 namespace MyCash.WealthManager.Core.DomainServices;
 
-public class FamilyService : IFamilyService
+internal class FamilyService : IFamilyService
 {
-    public Expense AddExpense(Family family, string Name, Value value, Date sendDate, bool isActive, MoneyTransferType expenseType, Period? period, string description)
+    public Expense AddExpense(Family family, string Name, Value value, Date sendDate, bool isActive, MoneyTransferType expenseType, Period? period, string? description)
     {
         var expense = new Expense
         {
@@ -23,7 +23,7 @@ public class FamilyService : IFamilyService
         return expense;
     }
 
-    public Income AddIncome(Family family, string Name, Value valueNet, Value valueGross, Date receiveDate, bool isActive, MoneyTransferType incomeType, Period? period, string? Description)
+    public Income AddIncome(Family family, string Name, Value valueNet, Value valueGross, Date receiveDate, bool isActive, MoneyTransferType incomeType, Period? period, string? description)
     {
         var income = new Income
         {
@@ -41,4 +41,10 @@ public class FamilyService : IFamilyService
         family.AddIncome(income);
         return income;
     }
+
+    public void DeleteExpense(Family family, Guid expenseId)
+        => family.DeleteExpense(expenseId);
+
+    public void DeleteIncome(Family family, Guid incomeId)
+        => family.DeleteIncome(incomeId);
 }
