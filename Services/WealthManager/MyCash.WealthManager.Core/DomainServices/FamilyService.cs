@@ -29,7 +29,7 @@ internal class FamilyService : IFamilyService
         {
             Id = IncomeId.Create(),
             Name = Name,
-            Description = Description,
+            Description = description,
             IncomeType = incomeType,
             IsActive = isActive,
             Period = period,

@@ -12,6 +12,9 @@ public class Family : AggregateRoot
     public FamilyName FamilyName { get; set; } = null!;
     public FamilySettings Settings { get; set; } = new();
 
+    public IEnumerable<Expense> Expenses => _expenses;
+    public IEnumerable<Income> Incomes => _incomes;
+
     public Family(AggregateId id, UserId userId, FamilyName familyName)
     {
         Id = id;

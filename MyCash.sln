@@ -55,7 +55,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WealthManager", "WealthMana
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.WealthManager.Core", "Services\WealthManager\MyCash.WealthManager.Core\MyCash.WealthManager.Core.csproj", "{F76450A9-F634-43A3-A17C-41957ADBEF81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.WealthManager.Application", "Services\WealthManager\MyCash.WealthManager.Application\MyCash.WealthManager.Application.csproj", "{E3A310FC-2B7F-43E9-B1F8-10A063A49590}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.WealthManager.Application", "Services\WealthManager\MyCash.WealthManager.Application\MyCash.WealthManager.Application.csproj", "{E3A310FC-2B7F-43E9-B1F8-10A063A49590}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.WealthManager.Infrastructure", "Services\WealthManager\MyCash.WealthManager.Infrastructure\MyCash.WealthManager.Infrastructure.csproj", "{1F93DBBC-D576-40A5-9507-F3D322E3F5FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.WealthManager", "Services\WealthManager\MyCash.WealthManager\MyCash.WealthManager.csproj", "{14B2CCFC-79FC-46B5-B124-03A3F27D3A0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -139,6 +143,14 @@ Global
 		{E3A310FC-2B7F-43E9-B1F8-10A063A49590}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3A310FC-2B7F-43E9-B1F8-10A063A49590}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3A310FC-2B7F-43E9-B1F8-10A063A49590}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F93DBBC-D576-40A5-9507-F3D322E3F5FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F93DBBC-D576-40A5-9507-F3D322E3F5FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F93DBBC-D576-40A5-9507-F3D322E3F5FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F93DBBC-D576-40A5-9507-F3D322E3F5FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14B2CCFC-79FC-46B5-B124-03A3F27D3A0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14B2CCFC-79FC-46B5-B124-03A3F27D3A0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14B2CCFC-79FC-46B5-B124-03A3F27D3A0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14B2CCFC-79FC-46B5-B124-03A3F27D3A0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -168,6 +180,8 @@ Global
 		{129D148E-6F52-422C-95A0-B727A1BCC600} = {7BE904A7-58D9-4921-B5DE-FC143C2B07EB}
 		{F76450A9-F634-43A3-A17C-41957ADBEF81} = {129D148E-6F52-422C-95A0-B727A1BCC600}
 		{E3A310FC-2B7F-43E9-B1F8-10A063A49590} = {129D148E-6F52-422C-95A0-B727A1BCC600}
+		{1F93DBBC-D576-40A5-9507-F3D322E3F5FB} = {129D148E-6F52-422C-95A0-B727A1BCC600}
+		{14B2CCFC-79FC-46B5-B124-03A3F27D3A0C} = {129D148E-6F52-422C-95A0-B727A1BCC600}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6084E8DE-FCFB-4E8E-B2D6-A055ECB48969}

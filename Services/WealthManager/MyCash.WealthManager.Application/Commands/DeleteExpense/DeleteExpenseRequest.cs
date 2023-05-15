@@ -25,7 +25,7 @@ internal sealed class DeleteExpenseRequestHandler : IRequestHandler<DeleteExpens
 
         var family = await _familyRepository.GetFamilyAsync(request.FamilyId, cancellationToken);
 
-        await _familyService.DeleteExpense(family, request.ExpenseId);
+        _familyService.DeleteExpense(family, request.ExpenseId);
 
         await _familyRepository.UpdateFamilyAsync(family, cancellationToken);
     }

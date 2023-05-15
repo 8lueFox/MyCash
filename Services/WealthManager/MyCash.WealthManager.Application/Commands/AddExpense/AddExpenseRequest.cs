@@ -35,7 +35,7 @@ public class AddExpenseRequestHandler : IRequestHandler<AddExpenseRequest, Guid>
 
         var family = await _familyRepository.GetFamilyAsync(request.FamilyId, cancellationToken);
 
-        var expense = await _familyService.AddExpense(family, request.Name, new Value { Count = request.Count, Currency = request.Currency }, request.SendDate, request.IsActive, request.ExpenseType, request.Period, request.Description); ;
+        var expense = _familyService.AddExpense(family, request.Name, new Value(request.Count, request.Currency ), request.SendDate, request.IsActive, request.ExpenseType, request.Period, request.Description); ;
 
         await _familyRepository.UpdateFamilyAsync(family, cancellationToken);
 

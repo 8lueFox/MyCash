@@ -68,6 +68,6 @@ internal sealed class UserInvestmentObjectsRepository : IUserInvestmentObjectRep
     public async Task UpdateAsync(UserInvestmentObjects userInvestmentObjects, CancellationToken cancellationToken)
     {
         _userInvestmentObjects.Update(userInvestmentObjects);
-        await _dbContext.SaveChangesAsync();
+        await _dbContext.SaveChangesAsync(cancellationToken);
     }
 }

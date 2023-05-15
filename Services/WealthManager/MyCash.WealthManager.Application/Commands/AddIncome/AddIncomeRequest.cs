@@ -37,7 +37,7 @@ public class AddIncomeRequestHandler : IRequestHandler<AddIncomeRequest, Guid>
 
         var family = await _familyRepository.GetFamilyAsync(request.FamilyId, cancellationToken);
 
-        var expense = await _familyService.AddIncome(family, request.Name, new Value { Count = request.CountNet, Currency = request.Currency }, new Value { Currency = request.Currency, Count = request.CountGross }, request.ReceiveDate, request.IsActive, request.IncomeType, request.Period, request.Description); ;
+        var expense = _familyService.AddIncome(family, request.Name, new Value(request.CountNet, request.Currency), new Value(request.CountGross, request.Currency), request.ReceiveDate, request.IsActive, request.IncomeType, request.Period, request.Description); ;
 
         await _familyRepository.UpdateFamilyAsync(family, cancellationToken);
 

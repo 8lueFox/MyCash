@@ -1,4 +1,6 @@
-﻿namespace MyCash.WealthManager.Core.ValueObjects;
+﻿using MyCash.WealthManager.Core.Exceptions;
+
+namespace MyCash.WealthManager.Core.ValueObjects;
 public sealed record FamilyName
 {
     public string Value { get; }
@@ -6,7 +8,7 @@ public sealed record FamilyName
     public FamilyName(string value)
     {
         if (value is null || value.Length < 3)
-            throw new InvalidInvestmentObjectException(value);
+            throw new InvalidFamilyNameException(value);
 
         Value = value;
     }

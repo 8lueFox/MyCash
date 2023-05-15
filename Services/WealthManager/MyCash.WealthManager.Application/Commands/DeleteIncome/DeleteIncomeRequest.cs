@@ -26,7 +26,7 @@ public sealed class DeleteIncomeRequestHandler : IRequestHandler<DeleteIncomeReq
 
         var family = await _familyRepository.GetFamilyAsync(request.FamilyId, cancellationToken);
 
-        await _familyService.DeleteIncome(family, request.IncomeId);
+        _familyService.DeleteIncome(family, request.IncomeId);
 
         await _familyRepository.UpdateFamilyAsync(family, cancellationToken);
     }

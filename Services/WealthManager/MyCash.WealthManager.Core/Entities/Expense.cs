@@ -13,4 +13,6 @@ public class Expense
     public bool IsActive { get; set; }
     public MoneyTransferType ExpenseType { get; set; } = MoneyTransferType.Default;
     public Period? Period { get; set; }
+
+    public virtual AggregateId FamilyId { get; set; } = null!;
 }

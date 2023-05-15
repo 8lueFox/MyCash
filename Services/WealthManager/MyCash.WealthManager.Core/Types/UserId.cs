@@ -17,9 +17,9 @@ public record UserId
         Value = value;
     }
 
-    public static InvestmentObjectId Create() => new(Guid.NewGuid());
+    public static UserId Create() => new(Guid.NewGuid());
 
-    public static implicit operator UserId(TransactionId obj)
+    public static implicit operator Guid(UserId obj)
         => obj.Value;
 
     public static implicit operator UserId(Guid value)
