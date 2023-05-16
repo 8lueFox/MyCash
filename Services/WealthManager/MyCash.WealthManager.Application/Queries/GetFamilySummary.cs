@@ -5,7 +5,7 @@ using MyCash.WealthManager.Core.Repositories;
 
 namespace MyCash.WealthManager.Application.Queries;
 
-public record GetFamilySummaryRequest(Guid FamilyId) : IRequest<FamilySummaryDto>;
+public record GetFamilySummaryRequest(Guid UserId, Guid FamilyId) : IRequest<FamilySummaryDto>;
 
 internal class GetFamilySummaryRequestHandler : IRequestHandler<GetFamilySummaryRequest, FamilySummaryDto>
 {
@@ -22,6 +22,9 @@ internal class GetFamilySummaryRequestHandler : IRequestHandler<GetFamilySummary
     {
         var family = await _familyRepository.GetFamilyAsync(request.FamilyId, cancellationToken);
 
-        return _mapper.Map<FamilySummaryDto>(family);
+        if(family?.UserId.Value == request.UserId)
+            return _mapper.Map<FamilySummaryDto>(family);
+
+        return null!;
     }
 }

@@ -35,6 +35,7 @@ public class Family : AggregateRoot
         if (expense is null)
             return;
 
+        expense.FamilyId = Id;
         _expenses.Add(expense);
     }
 

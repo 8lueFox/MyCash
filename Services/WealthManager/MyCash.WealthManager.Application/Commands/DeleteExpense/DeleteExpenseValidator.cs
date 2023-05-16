@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using MyCash.WealthManager.Application.Commands.AddExpense;
 using MyCash.WealthManager.Core.Exceptions;
 using MyCash.WealthManager.Core.Repositories;
 
@@ -12,6 +13,9 @@ internal class DeleteExpenseValidator : AbstractValidator<DeleteExpenseRequest>
     {
         _familyRepository = familyRepository;
 
+        RuleFor(x => x)
+            .MustAsync(CheckUserHasPrivileges)
+                .WithMessage("Użytkownik nie ma uprawnień do tej rodziny.");
         RuleFor(x => x.FamilyId).CustomAsync(CheckFamilyExists);
     }
 
@@ -21,5 +25,15 @@ internal class DeleteExpenseValidator : AbstractValidator<DeleteExpenseRequest>
     {
         var _ = await _familyRepository.GetFamilyAsync(familyId, cancellationToken) 
             ?? throw new NotFoundException($"Podany identyfikator rodziny ({familyId}) nie istnieje.");
+    }
+
+    private async Task<bool> CheckUserHasPrivileges(DeleteExpenseRequest deleteExpenseRequest, CancellationToken cancellationToken)
+    {
+        var family = await _familyRepository.GetFamilyAsync(deleteExpenseRequest.FamilyId, cancellationToken);
+
+        if (family is not null && family.UserId.Value == deleteExpenseRequest.UserId)
+            return true;
+
+        return false;
     }
 }

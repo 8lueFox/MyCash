@@ -8,6 +8,7 @@ using MyCash.WealthManager.Core.ValueObjects;
 namespace MyCash.WealthManager.Application.Commands.AddExpense;
 
 public record AddIncomeRequest(
+    Guid UserId,
     Guid FamilyId,
     string Name,
     string? Description,

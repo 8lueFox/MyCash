@@ -1,12 +1,11 @@
 ﻿using FluentValidation;
 using MediatR;
-using MyCash.WealthManager.Application.Commands.DeleteExpense;
 using MyCash.WealthManager.Core.DomainServices;
 using MyCash.WealthManager.Core.Repositories;
 
 namespace MyCash.WealthManager.Application.Commands.DeleteIncome;
 
-public record DeleteIncomeRequest(Guid FamilyId, Guid IncomeId) : IRequest;
+public record DeleteIncomeRequest(Guid UserId, Guid FamilyId, Guid IncomeId) : IRequest;
 
 public sealed class DeleteIncomeRequestHandler : IRequestHandler<DeleteIncomeRequest>
 {

@@ -5,7 +5,7 @@ using MyCash.WealthManager.Core.Repositories;
 
 namespace MyCash.WealthManager.Application.Commands.CreateFamily;
 
-public record CreateFamilyRequest(Guid UserId, string Name) : IRequest<Guid>;
+public record CreateFamilyRequest(Guid UserId, string Name, string Currency, decimal ExpectedMonthyExpenses) : IRequest<Guid>;
 
 internal sealed class CreateFamilyRequestHandler : IRequestHandler<CreateFamilyRequest, Guid>
 {

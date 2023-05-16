@@ -1,31 +1,29 @@
 ﻿using Micro.WebAPI;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MyCash.WealthManager.Application.Commands.AddExpense;
 using MyCash.WealthManager.Application.Commands.CreateFamily;
 using MyCash.WealthManager.Application.Queries;
 
-namespace MyCash.WealthManager.Controllers
+namespace MyCash.WealthManager.Controllers;
+
+[Route("api/[controller]/[action]")]
+[Authorize]
+public class WealthController : BaseController
 {
-    [Route("api/[controller]/[action]")]
-    public class WealthController : BaseController
-    {
-        private readonly IHttpContextAccessor _contextAccessor;
+    [HttpGet]
+    public async Task<ActionResult> GetFamilty([FromQuery]GetFamilySummaryRequest request)
+        => Ok(await Mediator.Send(request with { UserId = UserId(HttpContext) }));
 
-        public WealthController(IHttpContextAccessor contextAccessor)
-        {
-            _contextAccessor = contextAccessor;
-        }
+    [HttpPost]
+    public async Task<ActionResult> CreateFamily(CreateFamilyRequest request)
+        => Ok(await Mediator.Send(request with { UserId = UserId(HttpContext) }));
 
-        [HttpGet]
-        public async Task<ActionResult> GetFamilty([FromQuery]GetFamilySummaryRequest request)
-            => Ok(await Mediator.Send(request));
+    [HttpPost]
+    public async Task<ActionResult> AddExpense(AddExpenseRequest request)
+        => Ok(await Mediator.Send(request with { UserId = UserId(HttpContext) }));
 
-        [HttpPost]
-        public async Task<ActionResult> CreateFamily(CreateFamilyRequest request)
-        {
-            var response = await Mediator.Send(request);
-
-            return Ok(response);
-        }
-    }
+    [HttpPost]
+    public async Task<ActionResult> AddIncome(AddIncomeRequest request)
+        => Ok(await Mediator.Send(request with { UserId = UserId(HttpContext) }));
 }

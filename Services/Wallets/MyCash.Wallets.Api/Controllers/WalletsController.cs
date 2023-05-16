@@ -8,6 +8,7 @@ using MyCash.Wallets.Application.Queries;
 namespace MyCash.Wallets.Api.Controllers;
 
 [Route("api/[controller]/[action]")]
+[Authorize]
 public class WalletsController : BaseController
 {
     private readonly IHttpContextAccessor _context;
@@ -35,6 +36,7 @@ public class WalletsController : BaseController
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<ActionResult<Guid>> AddInvestmentObject(AddInvestmentObjectRequest request)
     {
         var response = await Mediator.Send(request);

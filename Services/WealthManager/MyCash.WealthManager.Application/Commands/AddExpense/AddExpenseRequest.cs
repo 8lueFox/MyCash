@@ -7,6 +7,7 @@ using MyCash.WealthManager.Core.ValueObjects;
 namespace MyCash.WealthManager.Application.Commands.AddExpense;
 
 public record AddExpenseRequest(
+    Guid UserId,
     Guid FamilyId,
     string Name, 
     string? Description, 
@@ -15,7 +16,7 @@ public record AddExpenseRequest(
     Date SendDate,
     bool IsActive, 
     string ExpenseType, 
-    string? Period) : IRequest<Guid>;
+    int? Period) : IRequest<Guid>;
 
 public class AddExpenseRequestHandler : IRequestHandler<AddExpenseRequest, Guid>
 {
@@ -35,7 +36,8 @@ public class AddExpenseRequestHandler : IRequestHandler<AddExpenseRequest, Guid>
 
         var family = await _familyRepository.GetFamilyAsync(request.FamilyId, cancellationToken);
 
-        var expense = _familyService.AddExpense(family, request.Name, new Value(request.Count, request.Currency ), request.SendDate, request.IsActive, request.ExpenseType, request.Period, request.Description); ;
+        var period = request.Period is null ? 0 : (int)request.Period;
+        var expense = _familyService.AddExpense(family, request.Name, new Value(request.Count, request.Currency ), request.SendDate, request.IsActive, request.ExpenseType, new Period(period), request.Description); ;
 
         await _familyRepository.UpdateFamilyAsync(family, cancellationToken);
 
