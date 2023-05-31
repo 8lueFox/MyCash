@@ -6,5 +6,5 @@ namespace MyCash.WealthManager.Core.Factories;
 
 public interface IFamilyFactory
 {
-    Task<Family> CreateAsync(UserId userId, FamilyName familyName, CancellationToken cancellationToken);
+    Task<Family> CreateAsync(UserId userId, FamilyName familyName, FamilySettings familySettings, CancellationToken cancellationToken);
 }

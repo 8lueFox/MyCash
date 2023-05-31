@@ -14,6 +14,6 @@ public class FamilyProfile : Profile
             .ForMember(x => x.SumOfIncomes, opt => opt.MapFrom(x => x.GetSumOfIncomes(x.Settings.Currency)))
             .ForMember(x => x.Colour, opt => opt.MapFrom(x => x.Settings.Colour))
             .ForMember(x => x.Currency, opt => opt.MapFrom(x => x.Settings.Currency))
-            .ForMember(x => x.FamilyName, opt => opt.MapFrom(x => x.FamilyName));
+            .ForMember(x => x.FamilyName, opt => opt.MapFrom(x => x.FamilyName.Value));
     }
 }

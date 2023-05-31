@@ -2,6 +2,7 @@
 
 public record Period(int Days)
 {
+    public const int None = 0;
     public const int Daily = 1;
     public const int Weekly = 7;
     public const int Monthly = 30;

@@ -17,13 +17,7 @@ internal sealed class FamilyConfiguration : IEntityTypeConfiguration<Family>
             .HasConversion(x => x.Value, x => new UserId(x));
         builder.Property(x => x.FamilyName)
             .HasConversion(x => x.Value, x => new FamilyName(x));
-        builder.OwnsOne(x => x.Settings, sb =>
-        {
-            sb.OwnsOne(x => x.ExpectedMonthyExpenses, sb2 =>
-            {
-                sb2.Property(x => x.Currency).HasMaxLength(10);
-            });
-        });
+        builder.OwnsOne(x => x.Settings);
 
         builder.HasMany(x => x.Expenses);
         builder.HasMany(x => x.Incomes);

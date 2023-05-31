@@ -23,7 +23,11 @@ internal class FamilyRepository : IFamilyRepository
 
     public async Task<Family> GetFamilyAsync(Guid familyId, CancellationToken cancellationToken)
     {
-        return await _families.Include(x => x.Expenses).Include(x => x.Incomes).SingleOrDefaultAsync(x => x.Id.Value == familyId, cancellationToken);
+        return await _families
+            .Include(x => x.Expenses)
+            .Include(x => x.Incomes)
+            .Include(x => x.Settings)
+            .SingleOrDefaultAsync(x => x.Id.Value == familyId, cancellationToken);
     }
 
     public async Task UpdateFamilyAsync(Family family, CancellationToken cancellationToken)

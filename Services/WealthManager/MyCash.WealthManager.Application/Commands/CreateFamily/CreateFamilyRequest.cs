@@ -2,6 +2,7 @@
 using MediatR;
 using MyCash.WealthManager.Core.Factories;
 using MyCash.WealthManager.Core.Repositories;
+using MyCash.WealthManager.Core.ValueObjects;
 
 namespace MyCash.WealthManager.Application.Commands.CreateFamily;
 
@@ -23,7 +24,12 @@ internal sealed class CreateFamilyRequestHandler : IRequestHandler<CreateFamilyR
         var validator = new CreateFamilyValidator();
         validator.ValidateAndThrow(request);
 
-        var family = await _familyFactory.CreateAsync(request.UserId, request.Name, cancellationToken);
+        var familySettings = new FamilySettings
+        {
+            Currency = request.Currency,
+            ExpectedMonthyExpenses = request.ExpectedMonthyExpenses
+        };
+        var family = await _familyFactory.CreateAsync(request.UserId, request.Name, familySettings, cancellationToken);
         await _familyRepository.CreateFamilyAsync(family, cancellationToken);
 
         return family.Id;

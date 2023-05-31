@@ -15,11 +15,16 @@ public class Family : AggregateRoot
     public IEnumerable<Expense> Expenses => _expenses;
     public IEnumerable<Income> Incomes => _incomes;
 
-    public Family(AggregateId id, UserId userId, FamilyName familyName)
+    public Family()
+    {
+        
+    }
+    public Family(AggregateId id, UserId userId, FamilyName familyName, FamilySettings settings)
     {
         Id = id;
         UserId = userId;
         FamilyName = familyName;
+        Settings = settings;
         IncrementVersion();
     }
 
@@ -47,7 +52,7 @@ public class Family : AggregateRoot
         _incomes.Add(income);
     }
 
-    public void SetExpectedMonthyExpenses(Value value)
+    public void SetExpectedMonthyExpenses(decimal value)
     {
         Settings.ExpectedMonthyExpenses = value;
     }

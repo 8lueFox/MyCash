@@ -1,7 +1,9 @@
 ﻿using FluentValidation;
 using MediatR;
+using Microsoft.IdentityModel.Tokens;
 using MyCash.WealthManager.Application.Commands.AddIncome;
 using MyCash.WealthManager.Core.DomainServices;
+using MyCash.WealthManager.Core.Entities;
 using MyCash.WealthManager.Core.Repositories;
 using MyCash.WealthManager.Core.ValueObjects;
 
@@ -18,7 +20,7 @@ public record AddIncomeRequest(
     Date ReceiveDate,
     bool IsActive,
     string IncomeType,
-    string? Period) : IRequest<Guid>;
+    int Period) : IRequest<Guid>;
 
 public class AddIncomeRequestHandler : IRequestHandler<AddIncomeRequest, Guid>
 {
@@ -38,10 +40,17 @@ public class AddIncomeRequestHandler : IRequestHandler<AddIncomeRequest, Guid>
 
         var family = await _familyRepository.GetFamilyAsync(request.FamilyId, cancellationToken);
 
-        var expense = _familyService.AddIncome(family, request.Name, new Value(request.CountNet, request.Currency), new Value(request.CountGross, request.Currency), request.ReceiveDate, request.IsActive, request.IncomeType, request.Period, request.Description); ;
+        Income? income = null;
+        try
+        {
+            income = _familyService.AddIncome(family, request.Name, new Value(request.CountNet, request.Currency), new Value(request.CountGross, request.Currency), request.ReceiveDate, request.IsActive, request.IncomeType, new Period(request.Period), request.Description);
+        }catch (Exception ex)
+        {
+            await Console.Out.WriteLineAsync(ex.Message);
+        }
 
         await _familyRepository.UpdateFamilyAsync(family, cancellationToken);
 
-        return expense.Id;
+        return income != null ? income.Id : Guid.Empty;
     }
 }
