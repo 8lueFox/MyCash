@@ -27,6 +27,7 @@ internal class FamilyRepository : IFamilyRepository
             .Include(x => x.Expenses)
             .Include(x => x.Incomes)
             .Include(x => x.Settings)
+            .Include(x => x.Balance)
             .SingleOrDefaultAsync(x => x.Id.Value == familyId, cancellationToken);
     }
 

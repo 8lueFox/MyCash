@@ -9,16 +9,17 @@ public class Family : AggregateRoot
     private readonly HashSet<Income> _incomes = new();
 
     public UserId UserId { get; private set; } = null!;
+    public AggregateId BalanceId { get; set; }
     public FamilyName FamilyName { get; set; } = null!;
     public FamilySettings Settings { get; set; } = new();
-
+    public Balance Balance { get; set; }
     public IEnumerable<Expense> Expenses => _expenses;
     public IEnumerable<Income> Incomes => _incomes;
 
     public Family()
     {
-        
-    }
+    } 
+
     public Family(AggregateId id, UserId userId, FamilyName familyName, FamilySettings settings)
     {
         Id = id;
@@ -26,6 +27,8 @@ public class Family : AggregateRoot
         FamilyName = familyName;
         Settings = settings;
         IncrementVersion();
+        Balance = new Balance(settings.Currency, Id);
+        BalanceId = Balance.Id;
     }
 
     

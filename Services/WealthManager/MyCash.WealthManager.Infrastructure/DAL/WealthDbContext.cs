@@ -8,6 +8,8 @@ internal class WealthDbContext : DbContext
     public DbSet<Income> Incomes { get; set; } = null!;
     public DbSet<Expense> Expenses { get; set; } = null!;
     public DbSet<Family> Families { get; set; } = null!;
+    public DbSet<Balance> Balances { get; set; } = null!;
+    public DbSet<BalanceEvent> BalanceEvents { get; set; } = null!;
 
     public WealthDbContext(DbContextOptions<WealthDbContext> options)
         : base(options)

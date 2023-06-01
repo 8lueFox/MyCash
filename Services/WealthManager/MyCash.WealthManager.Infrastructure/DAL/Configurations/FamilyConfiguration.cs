@@ -13,6 +13,8 @@ internal sealed class FamilyConfiguration : IEntityTypeConfiguration<Family>
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id)
             .HasConversion(x => x.Value, x => new AggregateId(x));
+        builder.Property(x => x.BalanceId)
+            .HasConversion(x => x.Value, x => new AggregateId(x));
         builder.Property(x => x.UserId)
             .HasConversion(x => x.Value, x => new UserId(x));
         builder.Property(x => x.FamilyName)
@@ -21,5 +23,8 @@ internal sealed class FamilyConfiguration : IEntityTypeConfiguration<Family>
 
         builder.HasMany(x => x.Expenses);
         builder.HasMany(x => x.Incomes);
+        builder.HasOne(x => x.Balance)
+            .WithOne(x => x.Family)
+            .HasForeignKey<Balance>(x => x.FamilyId);
     }
 }
