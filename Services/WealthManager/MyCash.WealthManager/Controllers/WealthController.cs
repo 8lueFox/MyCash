@@ -15,30 +15,30 @@ public class WealthController : BaseController
 {
     [HttpGet]
     public async Task<ActionResult> GetFamilty([FromQuery] GetFamilySummaryRequest request)
-        => Ok(await Mediator.Send(request with { UserId = UserId(HttpContext) }));
+        => Ok(await Mediator.Send(request));
 
     [HttpPost]
     public async Task<ActionResult> CreateFamily(CreateFamilyRequest request)
-        => Ok(await Mediator.Send(request with { UserId = UserId(HttpContext) }));
+        => Ok(await Mediator.Send(request));
 
     [HttpPost]
     public async Task<ActionResult> AddExpense(AddExpenseRequest request)
-        => Ok(await Mediator.Send(request with { UserId = UserId(HttpContext) }));
+        => Ok(await Mediator.Send(request));
 
     [HttpPost]
     public async Task<ActionResult> AddIncome(AddIncomeRequest request)
-        => Ok(await Mediator.Send(request with { UserId = UserId(HttpContext) }));
+        => Ok(await Mediator.Send(request));
 
     [HttpDelete]
     public async Task<ActionResult> DeleteExpense(DeleteExpenseRequest request)
     {
-        await Mediator.Send(request with { UserId = UserId(HttpContext) });
+        await Mediator.Send(request);
         return Ok();
     }
     [HttpDelete]
     public async Task<ActionResult> DeleteIncome(DeleteIncomeRequest request)
     {
-        await Mediator.Send(request with { UserId = UserId(HttpContext) });
+        await Mediator.Send(request);
         return Ok();
     }
 }

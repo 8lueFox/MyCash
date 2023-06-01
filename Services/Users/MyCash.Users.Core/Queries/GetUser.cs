@@ -1,12 +1,12 @@
 ﻿using MediatR;
+using Micro.WebAPI;
 using Microsoft.EntityFrameworkCore;
 using MyCash.Users.Core.DAL;
 using MyCash.Users.Core.Dto;
-using MyCash.Users.Core.Services;
 
 namespace MyCash.Users.Core.Queries;
 
-public record GetUserRequest(Guid UserId) : IRequest<UserDto>;
+public record GetUserRequest() : Request<UserDto>;
 
 internal class GetUserRequestHandler : IRequestHandler<GetUserRequest, UserDto>
 {

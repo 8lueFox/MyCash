@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using MediatR;
+using Micro.WebAPI;
 using MyCash.WealthManager.Application.DTO;
 using MyCash.WealthManager.Core.Repositories;
 
 namespace MyCash.WealthManager.Application.Queries;
 
-public record GetFamilySummaryRequest(Guid UserId, Guid FamilyId) : IRequest<FamilySummaryDto>;
+public record GetFamilySummaryRequest(Guid FamilyId) : Request<FamilySummaryDto>;
 
 internal class GetFamilySummaryRequestHandler : IRequestHandler<GetFamilySummaryRequest, FamilySummaryDto>
 {

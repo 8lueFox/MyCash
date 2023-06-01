@@ -1,11 +1,12 @@
 ﻿using FluentValidation;
 using MediatR;
+using Micro.WebAPI;
 using MyCash.WealthManager.Core.DomainServices;
 using MyCash.WealthManager.Core.Repositories;
 
 namespace MyCash.WealthManager.Application.Commands.DeleteExpense;
 
-public record DeleteExpenseRequest(Guid UserId, Guid FamilyId, Guid ExpenseId) : IRequest;
+public record DeleteExpenseRequest(Guid FamilyId, Guid ExpenseId) : Request;
 
 internal sealed class DeleteExpenseRequestHandler : IRequestHandler<DeleteExpenseRequest>
 {

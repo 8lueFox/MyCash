@@ -1,12 +1,13 @@
 ﻿using FluentValidation;
 using MediatR;
+using Micro.WebAPI;
 using MyCash.WealthManager.Core.Factories;
 using MyCash.WealthManager.Core.Repositories;
 using MyCash.WealthManager.Core.ValueObjects;
 
 namespace MyCash.WealthManager.Application.Commands.CreateFamily;
 
-public record CreateFamilyRequest(Guid UserId, string Name, string Currency, decimal ExpectedMonthyExpenses) : IRequest<Guid>;
+public record CreateFamilyRequest(string Name, string Currency, decimal ExpectedMonthyExpenses) : Request<Guid>;
 
 internal sealed class CreateFamilyRequestHandler : IRequestHandler<CreateFamilyRequest, Guid>
 {

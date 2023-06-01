@@ -4,7 +4,7 @@ using MyCash.PriceScraper.Core.Services;
 
 namespace MyCash.PriceScraper.Core.Queries;
 
-public record FetchStocksRequest : IRequest;
+public record FetchStocksRequest : Request;
 
 public class FetchStocksRequestHandler : IRequestHandler<FetchStocksRequest>
 {

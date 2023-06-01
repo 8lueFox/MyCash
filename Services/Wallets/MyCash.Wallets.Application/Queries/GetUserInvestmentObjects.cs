@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using MediatR;
+using Micro.WebAPI;
 using MyCash.Wallets.Application.DTO;
 using MyCash.Wallets.Core.Repositories;
 
 namespace MyCash.Wallets.Application.Queries;
 
-public record GetUserInvestmentObjectsRequest(Guid UserId) : IRequest<IEnumerable<UserInvestmentObjectsDto>>;
+public record GetUserInvestmentObjectsRequest(Guid UserId) : Request<IEnumerable<UserInvestmentObjectsDto>>;
 
 public class GetUserInvestmentObjectsRequestHandler : IRequestHandler<GetUserInvestmentObjectsRequest, IEnumerable<UserInvestmentObjectsDto>>
 {

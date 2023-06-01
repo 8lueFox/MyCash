@@ -1,10 +1,11 @@
 ﻿using MediatR;
+using Micro.WebAPI;
 using MyCash.Wallets.Core.DomainServices;
 using MyCash.Wallets.Core.Repositories;
 
 namespace MyCash.Wallets.Application.Commands;
 
-public record AddInvestmentObjectRequest(Guid UserInvestmentObjectsId, string Name, string Type) : IRequest<Guid>;
+public record AddInvestmentObjectRequest(Guid UserInvestmentObjectsId, string Name, string Type) : Request<Guid>;
 
 public class AddInvestmentObjectRequestHandler : IRequestHandler<AddInvestmentObjectRequest, Guid>
 {

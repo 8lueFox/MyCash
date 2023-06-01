@@ -5,7 +5,7 @@ using MyCash.Wallets.Core.Repositories;
 
 namespace MyCash.Wallets.Application.Queries;
 
-public record GetUserRequest(Guid Id) : IRequest<UserDto>;
+public record GetUserRequest(Guid Id) : Request<UserDto>;
 
 public class GetUserRequestHandler : IRequestHandler<GetUserRequest, UserDto>
 {

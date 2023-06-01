@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Micro.Messaging.RabbitMQ;
 using Micro.Security.Encryption;
+using Micro.WebAPI;
 using Microsoft.Extensions.Logging;
 using MyCash.Users.Core.Dto;
 using MyCash.Users.Core.Entities;
@@ -11,7 +12,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyCash.Users.Core.Commands;
 
-public record SignUpRequest(string Email, string Password) : IRequest;
+public record SignUpRequest(string Email, string Password) : Request;
 
 internal sealed class SingUpRequestHandler : IRequestHandler<SignUpRequest>
 {

@@ -9,7 +9,7 @@ public record AddTransactionToInvestmentObjectRequest(
     Guid UserInvestmentObjectsId,
     Guid InvestmentObjectId, 
     decimal Count, decimal Price, string Currency, 
-    DateTimeOffset Date) : IRequest;
+    DateTimeOffset Date) : Request;
 
 internal class AddTransactionToInvestmentObjectHandler : IRequestHandler<AddTransactionToInvestmentObjectRequest>
 {

@@ -1,11 +1,12 @@
 ﻿using MediatR;
+using Micro.WebAPI;
 using MyCash.Wallets.Core.Factories;
 using MyCash.Wallets.Core.Repositories;
 using MyCash.Wallets.Core.Types;
 
 namespace MyCash.Wallets.Application.Commands;
 
-public record CreateUserInvestmentObjectsRequest(Guid UserId, string Name) : IRequest<Guid>;
+public record CreateUserInvestmentObjectsRequest(Guid UserId, string Name) : Request<Guid>;
 
 internal sealed class CreateUserInvestmentObjectsHandler : IRequestHandler<CreateUserInvestmentObjectsRequest, Guid>
 {

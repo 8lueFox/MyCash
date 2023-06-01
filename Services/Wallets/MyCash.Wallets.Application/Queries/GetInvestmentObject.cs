@@ -5,7 +5,7 @@ using MyCash.Wallets.Core.Repositories;
 
 namespace MyCash.Wallets.Application.Queries;
 
-public record GetInvestmentObjectRequest(Guid InvestmentObjectId) : IRequest<InvestmentObjectDto>;
+public record GetInvestmentObjectRequest(Guid InvestmentObjectId) : Request<InvestmentObjectDto>;
 
 public class GetInvestmentObjectRequestHandler : IRequestHandler<GetInvestmentObjectRequest, InvestmentObjectDto>
 {

@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
+using Micro.WebAPI;
 using MyCash.WealthManager.Core.DomainServices;
 using MyCash.WealthManager.Core.Repositories;
 using MyCash.WealthManager.Core.ValueObjects;
@@ -7,7 +8,6 @@ using MyCash.WealthManager.Core.ValueObjects;
 namespace MyCash.WealthManager.Application.Commands.AddExpense;
 
 public record AddExpenseRequest(
-    Guid UserId,
     Guid FamilyId,
     string Name, 
     string? Description, 
@@ -16,7 +16,7 @@ public record AddExpenseRequest(
     Date SendDate,
     bool IsActive, 
     string ExpenseType, 
-    int? Period) : IRequest<Guid>;
+    int? Period) : Request<Guid>;
 
 public class AddExpenseRequestHandler : IRequestHandler<AddExpenseRequest, Guid>
 {

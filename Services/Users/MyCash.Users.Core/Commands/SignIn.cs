@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MyCash.Users.Core.Commands;
 
-public record SignInRequest(string Email, string Password) : IRequest;
+public record SignInRequest(string Email, string Password) : Request;
 
 public class SignInRequestHandler : IRequestHandler<SignInRequest>
 {

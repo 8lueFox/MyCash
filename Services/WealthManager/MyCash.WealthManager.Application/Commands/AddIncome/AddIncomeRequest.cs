@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
-using Microsoft.IdentityModel.Tokens;
+using Micro.WebAPI;
 using MyCash.WealthManager.Application.Commands.AddIncome;
 using MyCash.WealthManager.Core.DomainServices;
 using MyCash.WealthManager.Core.Entities;
@@ -10,7 +10,6 @@ using MyCash.WealthManager.Core.ValueObjects;
 namespace MyCash.WealthManager.Application.Commands.AddExpense;
 
 public record AddIncomeRequest(
-    Guid UserId,
     Guid FamilyId,
     string Name,
     string? Description,
@@ -20,7 +19,7 @@ public record AddIncomeRequest(
     Date ReceiveDate,
     bool IsActive,
     string IncomeType,
-    int Period) : IRequest<Guid>;
+    int Period) : Request<Guid>;
 
 public class AddIncomeRequestHandler : IRequestHandler<AddIncomeRequest, Guid>
 {
