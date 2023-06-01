@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Micro.WebAPI;
 using MyCash.Wallets.Application.DTO;
 using MyCash.Wallets.Core.Repositories;
 

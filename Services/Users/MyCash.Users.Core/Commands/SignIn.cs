@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Micro.Auth.JWT;
 using Micro.Security.Encryption;
+using Micro.WebAPI;
 using Microsoft.Extensions.Logging;
 using MyCash.Users.Core.Exceptions;
 using MyCash.Users.Core.Repositories;

@@ -42,7 +42,7 @@ public class UsersController : BaseController
     [AllowAnonymous]
     public async Task<ActionResult> GetInfoAboutMe()
     {
-        var user = await Mediator.Send(new GetUserRequest(UserId(_context.HttpContext)));
+        var user = await Mediator.Send(new GetUserRequest());
         return user is null ? NotFound() : Ok(user);
     }
 
@@ -52,8 +52,4 @@ public class UsersController : BaseController
         var user = await Mediator.Send(request);
         return user is null ? NotFound() : Ok(user);
     }
-
-    static Guid UserId(HttpContext? context)
-        => context is null ? Guid.Empty : string.IsNullOrWhiteSpace(context.User.Identity?.Name) ? Guid.Empty : Guid.Parse(context.User.Identity.Name);
-
 }

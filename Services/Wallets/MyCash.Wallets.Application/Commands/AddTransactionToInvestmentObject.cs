@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Micro.WebAPI;
 using MyCash.Wallets.Core.DomainServices;
 using MyCash.Wallets.Core.Repositories;
 using MyCash.Wallets.Core.ValueObjects;
