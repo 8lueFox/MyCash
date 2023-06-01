@@ -1,5 +1,6 @@
 ﻿using Hangfire;
 using MediatR;
+using Micro.WebAPI;
 using MyCash.PriceScraper.Core.Services;
 
 namespace MyCash.PriceScraper.Core.Queries;
