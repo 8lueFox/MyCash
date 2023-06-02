@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hangfire" Version="1.8.2" />
+    <PackageReference Include="Hangfire.MemoryStorage" Version="1.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\WealthManager\MyCash.WealthManager.Infrastructure\MyCash.WealthManager.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

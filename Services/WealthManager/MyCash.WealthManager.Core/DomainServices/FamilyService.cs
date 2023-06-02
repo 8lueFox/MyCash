@@ -13,13 +13,21 @@ internal class FamilyService : IFamilyService
             Id = ExpenseId.Create(),
             Name = Name,
             Value = value,
-            SendDate = sendDate,
+            OperationDate = sendDate,
             IsActive = isActive,
             Period = period,
-            Description = description
+            Description = description,
+            TransferType = expenseType
         };
 
         family.AddExpense(expense);
+        if (expenseType.Value == MoneyTransferType.Disposable)
+            family.AddBalanceEvent(new BalanceEvent
+            {
+                Name = Name,
+                Value = value,
+                BalanceEventType = BalanceEventType.Expense
+            });
         return expense;
     }
 
@@ -30,15 +38,21 @@ internal class FamilyService : IFamilyService
             Id = IncomeId.Create(),
             Name = Name,
             Description = description,
-            IncomeType = incomeType,
+            TransferType = incomeType,
             IsActive = isActive,
             Period = period,
-            ReceiveDate = receiveDate,
+            OperationDate = receiveDate,
             ValueGross = valueGross,
-            ValueNet = valueNet
+            Value = valueNet
         };
 
         family.AddIncome(income);
+        if (incomeType.Value == MoneyTransferType.Disposable)
+            family.AddBalanceEvent(new BalanceEvent
+            {
+                Name = Name,
+                Value = valueNet
+            });
         return income;
     }
 

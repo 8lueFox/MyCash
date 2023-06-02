@@ -6,7 +6,7 @@ public sealed record Date
 
     public Date(DateTimeOffset value)
     {
-        Value = value.Date.Date;
+        Value = value;
     }
 
     public static implicit operator DateTimeOffset(Date date)

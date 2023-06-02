@@ -9,6 +9,8 @@ public class BalanceEvent
     public string Name { get; set; } = string.Empty;
     public Value Value { get; set; } = null!;
     public Balance Balance { get; set; }
+    public Date EventDate { get; set; } = Date.Now;
+    public BalanceEventType BalanceEventType { get; set; } = BalanceEventType.Default;
 
-    public virtual AggregateId BalanceId { get; set; } = null!;
+    public AggregateId BalanceId { get; set; } = null!;
 }

@@ -36,7 +36,7 @@ public class Family : AggregateRoot
         => _expenses.Sum(x => x.Value.GetValueInSpecificCurrency(currency));
 
     public decimal GetSumOfIncomes(string currency)
-        => _incomes.Sum(x => x.ValueNet.GetValueInSpecificCurrency(currency));
+        => _incomes.Sum(x => x.Value.GetValueInSpecificCurrency(currency));
 
     public void AddExpense(Expense expense)
     {
@@ -51,7 +51,7 @@ public class Family : AggregateRoot
     {
         if (income is null)
             return;
-
+        income.FamilyId = Id;
         _incomes.Add(income);
     }
 
@@ -65,4 +65,7 @@ public class Family : AggregateRoot
 
     public void DeleteIncome(Guid incomeId)
         => _incomes.RemoveWhere(x => x.Id.Value == incomeId);
+
+    public void AddBalanceEvent(BalanceEvent balanceEvent)
+        => Balance.AddEvent(balanceEvent);
 }

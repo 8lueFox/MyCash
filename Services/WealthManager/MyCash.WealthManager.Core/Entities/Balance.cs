@@ -26,5 +26,9 @@ public class Balance : AggregateRoot
     }
 
     public void AddEvent(BalanceEvent @event)
-        => _events.Add(@event);
+    {
+        @event.BalanceId = Id;
+        _events.Add(@event);
+        Value.Count += @event.BalanceEventType == BalanceEventType.Income ? @event.Value.Count : -@event.Value.Count;
+    }
 }

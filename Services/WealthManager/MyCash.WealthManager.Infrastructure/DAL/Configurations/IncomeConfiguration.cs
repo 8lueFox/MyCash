@@ -13,19 +13,21 @@ internal sealed class IncomeConfiguration : IEntityTypeConfiguration<Income>
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id)
             .HasConversion(x => x.Value, x => new IncomeId(x));
-        builder.Property(x => x.IncomeType)
+        builder.Property(x => x.TransferType)
             .HasConversion(x => x.Value, x => new MoneyTransferType(x));
         builder.Property(x => x.Period)
             .HasConversion(x => x.Days, x => new Period(x));
-        builder.Property(x => x.ReceiveDate)
+        builder.Property(x => x.OperationDate)
             .HasConversion(x => x.Value, x => new Date(x));
         builder.OwnsOne(x => x.ValueGross, sb =>
         {
             sb.Property(x => x.Currency).HasMaxLength(10);
         });
-        builder.OwnsOne(x => x.ValueNet, sb =>
+        builder.OwnsOne(x => x.Value, sb =>
         {
             sb.Property(x => x.Currency).HasMaxLength(10);
         });
+
+        builder.HasOne<Family>().WithMany().HasForeignKey(x => x.FamilyId);
     }
 }

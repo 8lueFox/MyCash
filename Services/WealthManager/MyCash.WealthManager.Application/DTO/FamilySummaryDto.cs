@@ -8,4 +8,5 @@ public class FamilySummaryDto
     public string? Currency { get; set; }
     public decimal SumOfIncomes { get; set; }
     public decimal SumOfExpenses { get; set; }
+    public decimal CurrentValue { get; set; }
 }

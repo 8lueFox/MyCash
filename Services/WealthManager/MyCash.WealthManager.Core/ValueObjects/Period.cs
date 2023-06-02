@@ -12,6 +12,6 @@ public record Period(int Days)
     public static implicit operator int(Period type)
             => type.Days;
 
-    public static implicit operator Period(string value)
+    public static implicit operator Period(int value)
         => new(value);
 }

@@ -15,9 +15,9 @@ internal sealed class ExpenseConfiguration : IEntityTypeConfiguration<Expense>
             .HasConversion(x => x.Value, x => new ExpenseId(x));
         builder.Property(x => x.Period)
             .HasConversion(x => x.Days, x => new Period(x));
-        builder.Property(x => x.ExpenseType)
+        builder.Property(x => x.TransferType)
             .HasConversion(x => x.Value, x => new MoneyTransferType(x));
-        builder.Property(x => x.SendDate)
+        builder.Property(x => x.OperationDate)
             .HasConversion(x => x.Value, x => new Date(x));
         builder.OwnsOne(x => x.Value, sb =>
         {

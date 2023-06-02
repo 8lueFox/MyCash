@@ -6,7 +6,9 @@ namespace MyCash.WealthManager.Core.Repositories;
 
 public interface IFamilyRepository
 {
+    Task<IList<Family>> GetAllFamiliesAsync(CancellationToken cancellationToken);
     Task CreateFamilyAsync(Family family, CancellationToken cancellationToken);
     Task UpdateFamilyAsync(Family family, CancellationToken cancellationToken);
-    Task<Family> GetFamilyAsync(Guid familyId, CancellationToken cancellationToken);
+    Task<Family> GetFamilyAsync(AggregateId familyId, CancellationToken cancellationToken);
+    Task SaveChangesAsync(CancellationToken cancellationToken);
 }
