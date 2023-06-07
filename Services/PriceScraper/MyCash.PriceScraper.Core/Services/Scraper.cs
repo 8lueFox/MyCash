@@ -10,7 +10,7 @@ using System.Text.Json;
 
 namespace MyCash.PriceScraper.Core.Services;
 
-internal class Scraper : IScraper
+internal class Scraper : IScraperProcessor
 {
     private IStockRepository _stockRepository;
     private readonly IMapper _mapper;
@@ -24,42 +24,54 @@ internal class Scraper : IScraper
         _serviceProvider = serviceProvider;
     }
 
-    //https://api.nasdaq.com/api/screener/stocks?tableonly=true&limit=25&offset=0&download=true
-    public async Task FetchNasdaqStocks(CancellationToken cancellationToken)
+    public void ProcessEvent(string message)
+    {
+        var eventType = DetermineEvent(message);
+
+        switch (eventType)
+        {
+            case EventType.NasdaqFetched:
+                SaveAndPublicNasdaq(message);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private async void SaveAndPublicNasdaq(string message)
     {
         using IServiceScope scope = _serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope();
 
         _stockRepository = scope.ServiceProvider.GetRequiredService<IStockRepository>();
-        try
-        {
-            var client = new RestClient("https://api.nasdaq.com/api");
-            var request = new RestRequest("screener/stocks?tableonly=true&limit=25&offset=0&download=true");
+        var response = JsonSerializer.Deserialize<NasdaqPricesDto>(message);
+        var root = JsonSerializer.Deserialize<Root>(response.Content);
 
-            client.AddDefaultHeader("User-Agent", "PostmanRuntime/7.29.2");
-            client.AddDefaultHeader("Accept", "*/*");
+        var stocks = _mapper.Map<IEnumerable<Stock>>(root.data.rows);
+        await _stockRepository.AddRangeAsync(stocks);
 
-            request.Timeout = 15 * 1000;
+        var stocksDto = _mapper.Map<IEnumerable<StockDto>>(stocks);
+        var stocksBusDto = new StocksBusDto(stocksDto, "StocksUpdated");
 
-            var response = await client.GetAsync(request, cancellationToken);
-
-            Root root;
-            cancellationToken.ThrowIfCancellationRequested();
-            if (response.IsSuccessStatusCode && !string.IsNullOrEmpty(response.Content))
-            {
-                root = JsonSerializer.Deserialize<Root>(response.Content!)!;
-
-                var stocks = _mapper.Map<IEnumerable<Stock>>(root.data.rows);
-                await _stockRepository.AddRangeAsync(stocks, cancellationToken);
-
-                var stocksDto = _mapper.Map<IEnumerable<StockDto>>(stocks);
-                var stocksBusDto = new StocksBusDto(stocksDto, "StocksUpdated");
-
-                _messageBus.Publish(stocksBusDto);
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"An error occurred while fetching NASDAQ data: {ex.Message}.");
-        }
+        _messageBus.Publish(stocksBusDto);
     }
+
+    private static EventType DetermineEvent(string message)
+    {
+        var eventType = JsonSerializer.Deserialize<BusPublishDto>(message);
+
+        if (eventType is null)
+            return EventType.Undetermined;
+
+        return eventType.Event switch
+        {
+            "NasdaqFetched" => EventType.NasdaqFetched,
+            _ => EventType.Undetermined
+        };
+    }
+}
+
+enum EventType
+{
+    Undetermined,
+    NasdaqFetched
 }

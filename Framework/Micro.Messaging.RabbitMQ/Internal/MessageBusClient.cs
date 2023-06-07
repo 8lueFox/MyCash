@@ -41,7 +41,7 @@ internal class MessageBusClient : IMessageBusClient
     public void Publish<T>(T obj)
         where T : class
     {
-        var message = JsonSerializer.Serialize<T>(obj);
+        var message = JsonSerializer.Serialize(obj);
 
         if (_connection.IsOpen)
         {

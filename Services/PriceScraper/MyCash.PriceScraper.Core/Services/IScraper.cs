@@ -1,6 +1,7 @@
-﻿namespace MyCash.PriceScraper.Core.Services;
+﻿using Micro.Messaging.RabbitMQ;
 
-public interface IScraper
+namespace MyCash.PriceScraper.Core.Services;
+
+public interface IScraperProcessor : IEventProcessor
 {
-    Task FetchNasdaqStocks(CancellationToken cancellationToken);
 }

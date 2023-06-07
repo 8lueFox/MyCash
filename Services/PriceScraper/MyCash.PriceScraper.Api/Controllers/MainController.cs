@@ -1,7 +1,6 @@
 using Micro.Framework;
 using Micro.WebAPI;
 using Microsoft.AspNetCore.Mvc;
-using MyCash.PriceScraper.Core.Queries;
 
 namespace MyCash.PriceScraper.Api.Controllers
 {
@@ -18,13 +17,6 @@ namespace MyCash.PriceScraper.Api.Controllers
         public AppInfo Get()
         {
             return _appInfo;
-        }
-
-        [HttpGet("/startScraping")]
-        public async Task<ActionResult> StartScraping()
-        {
-            await Mediator.Send(new FetchStocksRequest());
-            return Ok();
         }
     }
 }

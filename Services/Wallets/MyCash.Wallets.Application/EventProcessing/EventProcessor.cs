@@ -76,7 +76,7 @@ internal sealed class EventProcessor : IEventProcessor
 
     private static EventType DetermineEvent(string message)
     {
-        var eventType = JsonSerializer.Deserialize<GenericEventDto>(message);
+        var eventType = JsonSerializer.Deserialize<BusPublishDto>(message);
 
         if (eventType is null)
             return EventType.Undetermined;
@@ -95,9 +95,4 @@ enum EventType
     Undetermined,
     SignUpUser,
     StocksUpdated
-}
-
-class GenericEventDto
-{
-    public string Event { get; set; }
 }

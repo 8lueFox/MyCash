@@ -61,11 +61,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.WealthManager.Infras
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.WealthManager", "Services\WealthManager\MyCash.WealthManager\MyCash.WealthManager.csproj", "{14B2CCFC-79FC-46B5-B124-03A3F27D3A0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.BackgroundWorker.Application", "Services\BackgroundWorker\MyCash.BackgroundWorker.Application\MyCash.BackgroundWorker.Application.csproj", "{C3A9969E-956E-442D-8A69-C2AC0853B7B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.BackgroundWorker.Application", "Services\BackgroundWorker\MyCash.BackgroundWorker.Application\MyCash.BackgroundWorker.Application.csproj", "{C3A9969E-956E-442D-8A69-C2AC0853B7B3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackgroundWorker", "BackgroundWorker", "{FD1DD202-D65D-4EC9-995C-C8F3A9B516A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCash.BackgroundWorker.Api", "Services\BackgroundWorker\MyCash.BackgroundWorker.Api\MyCash.BackgroundWorker.Api.csproj", "{1D4150D3-4F28-4C9D-8D23-1BFEB07C82C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCash.BackgroundWorker.Api", "Services\BackgroundWorker\MyCash.BackgroundWorker.Api\MyCash.BackgroundWorker.Api.csproj", "{1D4150D3-4F28-4C9D-8D23-1BFEB07C82C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{30499AA8-E9DD-4023-9CE6-8E0A89AEF5DC}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

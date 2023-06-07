@@ -1,5 +1,6 @@
 ﻿using Hangfire;
 using Hangfire.MemoryStorage;
+using Micro.Framework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,8 +20,10 @@ public static class Startup
             .AddHangfireServer()
             .AddCore()
             .AddApplication()
+            .AddMicroFramework(configuration)
             .AddInfrastructure(configuration)
             .AddTransient<IBalanceOrganizator, BalanceOrganizator>()
+            .AddTransient<IScraper, Scraper>()
             .AddHostedService<Starter>();
 
     public static IApplicationBuilder UseApp(this IApplicationBuilder app)
