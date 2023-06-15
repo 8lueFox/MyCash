@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+option csharp_namespace= "MyCash.WealthManager.Core";
+
+message GetAllRequest{}
+
+service GrpcUser{
+	rpc GetAllUsers(GetAllRequest) returns (UserResponse);
+}
+
+message GrpcUserModel{
+	string userId = 1;
+	string package = 2; 
+}
+
+message UserResponse{
+	repeated GrpcUserModel user = 1;
+}	

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyCash.WealthManager.Application.Commands.AddExpense;
+using MyCash.WealthManager.Application.Commands.AddIncome;
 using MyCash.WealthManager.Application.Commands.CreateFamily;
 using MyCash.WealthManager.Application.Commands.DeleteExpense;
 using MyCash.WealthManager.Application.Commands.DeleteIncome;

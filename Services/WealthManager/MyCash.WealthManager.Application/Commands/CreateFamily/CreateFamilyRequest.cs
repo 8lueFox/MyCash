@@ -12,12 +12,14 @@ public record CreateFamilyRequest(string Name, string Currency, decimal Expected
 internal sealed class CreateFamilyRequestHandler : IRequestHandler<CreateFamilyRequest, Guid>
 {
     private readonly IFamilyFactory _familyFactory;
-    private readonly IFamilyRepository _familyRepository;
+    private readonly IFamilyRepository _familyRepository; 
+    private readonly IUserRepository _userRepository;
 
-    public CreateFamilyRequestHandler(IFamilyFactory familyFactory, IFamilyRepository familyRepository)
+    public CreateFamilyRequestHandler(IFamilyFactory familyFactory, IFamilyRepository familyRepository, IUserRepository userRepository)
     {
         _familyFactory = familyFactory;
         _familyRepository = familyRepository;
+        _userRepository = userRepository;
     }
 
     public async Task<Guid> Handle(CreateFamilyRequest request, CancellationToken cancellationToken)
@@ -25,12 +27,13 @@ internal sealed class CreateFamilyRequestHandler : IRequestHandler<CreateFamilyR
         var validator = new CreateFamilyValidator();
         validator.ValidateAndThrow(request);
 
+        var user = await _userRepository.GetAsync(request.UserId, cancellationToken);
         var familySettings = new FamilySettings
         {
             Currency = request.Currency,
             ExpectedMonthyExpenses = request.ExpectedMonthyExpenses
         };
-        var family = await _familyFactory.CreateAsync(request.UserId, request.Name, familySettings, cancellationToken);
+        var family = await _familyFactory.CreateAsync(user.Id, request.Name, familySettings, cancellationToken);
         await _familyRepository.CreateFamilyAsync(family, cancellationToken);
 
         return family.Id;

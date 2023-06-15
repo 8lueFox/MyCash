@@ -175,6 +175,28 @@ namespace MyCash.WealthManager.Infrastructure.Migrations
                     b.ToTable("Incomes");
                 });
 
+            modelBuilder.Entity("MyCash.WealthManager.Core.Entities.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ExternalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("FamilyId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserPackage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FamilyId");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("MyCash.WealthManager.Core.Entities.Balance", b =>
                 {
                     b.HasOne("MyCash.WealthManager.Core.Entities.Family", "Family")
@@ -379,6 +401,13 @@ namespace MyCash.WealthManager.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MyCash.WealthManager.Core.Entities.User", b =>
+                {
+                    b.HasOne("MyCash.WealthManager.Core.Entities.Family", null)
+                        .WithMany("Users")
+                        .HasForeignKey("FamilyId");
+                });
+
             modelBuilder.Entity("MyCash.WealthManager.Core.Entities.Balance", b =>
                 {
                     b.Navigation("Events");
@@ -392,6 +421,8 @@ namespace MyCash.WealthManager.Infrastructure.Migrations
                     b.Navigation("Expenses");
 
                     b.Navigation("Incomes");
+
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

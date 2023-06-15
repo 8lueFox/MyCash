@@ -2,6 +2,7 @@ using Micro.Framework;
 using MyCash.WealthManager.Application;
 using MyCash.WealthManager.Core;
 using MyCash.WealthManager.Infrastructure;
+using Extensions = MyCash.WealthManager.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,5 +32,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+Extensions.InitDb(builder.Services.BuildServiceProvider(), new CancellationToken());
 
 app.Run();

@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using MyCash.WealthManager.Application.Commands.AddExpense;
 using MyCash.WealthManager.Application.Commands.CreateFamily;
 using MyCash.WealthManager.Core.Exceptions;
 using MyCash.WealthManager.Core.Repositories;

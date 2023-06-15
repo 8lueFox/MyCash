@@ -15,6 +15,7 @@ public class Family : AggregateRoot
     public Balance Balance { get; set; }
     public IEnumerable<Expense> Expenses => _expenses;
     public IEnumerable<Income> Incomes => _incomes;
+    public IEnumerable<User> Users { get; set; }
 
     public Family()
     {

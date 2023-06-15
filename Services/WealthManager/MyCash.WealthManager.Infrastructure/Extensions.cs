@@ -13,5 +13,14 @@ public static class Extensions
     => services
             .AddDbContext<WealthDbContext>(opt =>
                 opt.UseSqlServer(configuration.GetConnectionString("Wealth")))
-            .AddScoped<IFamilyRepository, FamilyRepository>();
+            .AddScoped<IFamilyRepository, FamilyRepository>()
+            .AddScoped<IUserRepository, UserRepository>()
+            .AddScoped<WealthDbInitializator>();
+
+    public async static void InitDb(IServiceProvider serviceProvider, CancellationToken cancellationToken)
+    {
+        var initiazlier = serviceProvider.GetRequiredService<WealthDbInitializator>();
+
+        await initiazlier.InitAsync(cancellationToken);
+    }
 }

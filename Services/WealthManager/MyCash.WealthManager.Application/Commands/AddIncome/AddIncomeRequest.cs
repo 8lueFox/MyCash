@@ -1,13 +1,12 @@
 ﻿using FluentValidation;
 using MediatR;
 using Micro.WebAPI;
-using MyCash.WealthManager.Application.Commands.AddIncome;
 using MyCash.WealthManager.Core.DomainServices;
 using MyCash.WealthManager.Core.Entities;
 using MyCash.WealthManager.Core.Repositories;
 using MyCash.WealthManager.Core.ValueObjects;
 
-namespace MyCash.WealthManager.Application.Commands.AddExpense;
+namespace MyCash.WealthManager.Application.Commands.AddIncome;
 
 public record AddIncomeRequest(
     Guid FamilyId,
@@ -43,7 +42,8 @@ public class AddIncomeRequestHandler : IRequestHandler<AddIncomeRequest, Guid>
         try
         {
             income = _familyService.AddIncome(family, request.Name, new Value(request.CountNet, request.Currency), new Value(request.CountGross, request.Currency), request.ReceiveDate, request.IsActive, request.IncomeType, new Period(request.Period), request.Description);
-        }catch (Exception ex)
+        }
+        catch (Exception ex)
         {
             await Console.Out.WriteLineAsync(ex.Message);
         }
